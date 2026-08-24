@@ -90,6 +90,13 @@ window.PORTFOLIO_DATA = {
       { name: "DNS & Hostinger hPanel", level: 92, icon: "server" },
       { name: "Git & GitHub CI/CD", level: 94, icon: "code" }
     ],
+    testingQA: [
+      { name: "Playwright E2E Automation", level: 96, icon: "cpu" },
+      { name: "Page Object Model (POM)", level: 95, icon: "layers" },
+      { name: "Security Testing (SQLi / XSS)", level: 90, icon: "shield" },
+      { name: "Data-Driven Stress Testing", level: 92, icon: "zap" },
+      { name: "MD5 Checksum & File Validation", level: 94, icon: "check" }
+    ],
     architecture: [
       { name: "Dynamic Bottom-Up SUM Algorithms", level: 96 },
       { name: "Client-Side Media Compression", level: 92 },
@@ -218,6 +225,53 @@ Supabase Cloud (PostgreSQL Database)
        │
        ▼ (Supabase SSR & Client SDK)
 PostgreSQL Database with Row Level Security (RLS) Policies`
+    },
+    {
+      id: "mentorhub-qa",
+      title: "MentorHub LMS — SDET & Automated QA Architecture",
+      subtitle: "End-to-End Test Automation Framework, Multi-Role RBAC & Security Hardening",
+      category: "qa",
+      categoryName: "QA & SDET Automation",
+      featured: true,
+      badge: "Quality Engineering",
+      isPrivate: true,
+      tagline: "Industrial-grade automated testing framework built with Playwright and TypeScript, featuring Page Object Model architecture, SQLi/XSS resilience testing, document checksum verification, and 100-batch stress testing.",
+      overview: "An automated quality assurance and SDET framework engineered for the MentorHub Learning Management System. The framework executes automated multi-role validation across 4 access tiers (Super Admin, Admin, Pendamping, Penerima Bantuan), security injection resilience tests (SQLi/XSS), MD5 checksum and byte-size verification for downloaded document templates, comprehensive network broken link crawlers, and data-driven stress tests across 100 beneficiary test accounts.",
+      techStack: ["Playwright Test", "TypeScript 5", "Node.js", "Page Object Model (POM)", "Data-Driven Testing (DDT)", "Security Hardening", "MD5 Baseline Checksum"],
+      github: null,
+      demoUrl: null,
+      stats: [
+        { label: "Role Scenarios", value: "4 Tiers" },
+        { label: "Batch Stress Test", value: "100 Accounts" },
+        { label: "Security Vectors", value: "SQLi + XSS" },
+        { label: "Test Architecture", value: "POM Pattern" }
+      ],
+      highlights: [
+        "**Page Object Model (POM) Modular Architecture**: Decoupled test fixtures, page locators, and user action handlers across Login, Register, Profile, Penerima Bantuan, and Dashboard flows.",
+        "**Multi-Role RBAC Governance**: Automated permission matrices testing positive and negative access control boundaries for Super Admin, Admin, Mentors (Pendamping), and Beneficiaries (Penerima Bantuan).",
+        "**Security & Injection Resilience Testing**: Automated fuzzing testing against SQL Injection and XSS attack vectors in authentication and registration inputs.",
+        "**Data Integrity & MD5 Checksum Baselines**: Automated download testing that hashes downloaded files against MD5 baselines and byte-lengths to guarantee zero asset corruption.",
+        "**100-Account Data-Driven Stress Testing**: Automated batch stress runner (`stress.spec.ts`) evaluating server authentication latency, session stability, and redirect flows across 100 accounts concurrently.",
+        "**Automated Navigation & 404 Spider Crawl**: Full crawler intercepting HTTP network traffic across all authenticated routes to detect broken links or invalid response codes."
+      ],
+      architecture: `Playwright Test Runner (TypeScript + Node.js)
+       │
+       ├─ Global Helpers:
+       │    ├─ generalFunctions.ts, getDate.ts, getRandomData.ts
+       │    ├─ networkIntercept.ts (404 Detection & Response Interception)
+       │    └─ verifyScreenshootOption.ts (Visual & Hash Comparisons)
+       │
+       ├─ Page Object Models (POM):
+       │    ├─ login.page.ts & register.page.ts (Auth & Form Validations)
+       │    ├─ dashboard.page.ts (Role-based widgets & access control)
+       │    └─ penerimaBantuan.page.ts & pendamping.page.ts (Workflow gates)
+       │
+       ▼ Test Execution Suites
+       ├─ 01. auth/ (Login E2E, SQLi/XSS Resilience, Negative Form Cases)
+       ├─ 02. dashboard/ (Document Progress, Workflow Rejections, Stage Steps)
+       ├─ 03. dataIntegrity/ (Template Downloads vs MD5 Hash Baselines)
+       ├─ 04. menuAudit/ (Full Spider Crawl for Broken Links & 404s)
+       └─ 05. stress/ (Data-Driven Batch Load Tests across 100 Accounts)`
     }
   ]
 };

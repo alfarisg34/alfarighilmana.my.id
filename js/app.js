@@ -140,7 +140,8 @@ function renderSkills() {
   const categories = [
     { key: 'frontend', title: 'Frontend Engineering', icon: 'zap' },
     { key: 'backend', title: 'Backend & Processing', icon: 'server' },
-    { key: 'databaseCloud', title: 'Database & Cloud', icon: 'database' }
+    { key: 'databaseCloud', title: 'Database & Cloud', icon: 'database' },
+    { key: 'testingQA', title: 'QA & Test Automation', icon: 'shield' }
   ];
 
   container.innerHTML = categories.map(cat => {
@@ -219,6 +220,12 @@ function renderProjects(categoryFilter = 'all') {
               ${icons.github}
               <span>Source Code</span>
             </a>
+          ` : ''}
+          ${project.isPrivate ? `
+            <span class="badge badge-amber" style="padding: 0.45rem 0.85rem; font-size: 0.8rem;">
+              ${icons.shield}
+              <span>Private Enterprise Repo</span>
+            </span>
           ` : ''}
           ${project.demoUrl ? `
             <a href="${project.demoUrl}" target="_blank" rel="noopener" class="btn btn-outline-emerald btn-sm">
@@ -362,12 +369,18 @@ function openCaseStudyModal(projectId) {
         </div>
       `).join('')}
     </div>
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
       ${project.github ? `
         <a href="${project.github}" target="_blank" rel="noopener" class="btn btn-primary">
           ${window.ICONS.github}
           <span>Explore GitHub Repository</span>
         </a>
+      ` : ''}
+      ${project.isPrivate ? `
+        <div class="badge badge-amber" style="padding: 0.6rem 1rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+          ${window.ICONS.shield}
+          <span>Enterprise Confidential / Private QA Framework</span>
+        </div>
       ` : ''}
       ${project.demoUrl ? `
         <a href="${project.demoUrl}" target="_blank" rel="noopener" class="btn btn-outline-emerald">
