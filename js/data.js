@@ -228,7 +228,7 @@ PostgreSQL Database with Row Level Security (RLS) Policies`
     },
     {
       id: "mentorhub-qa",
-      title: "MentorHub LMS — SDET & Automated QA Architecture",
+      title: "ConnectHub LMS — SDET & Automated QA Architecture",
       subtitle: "End-to-End Test Automation Framework, Multi-Role RBAC & Security Hardening",
       category: "qa",
       categoryName: "QA & SDET Automation",
@@ -236,7 +236,7 @@ PostgreSQL Database with Row Level Security (RLS) Policies`
       badge: "Quality Engineering",
       isPrivate: true,
       tagline: "Industrial-grade automated testing framework built with Playwright and TypeScript, featuring Page Object Model architecture, SQLi/XSS resilience testing, document checksum verification, and 100-batch stress testing.",
-      overview: "An automated quality assurance and SDET framework engineered for the MentorHub Learning Management System. The framework executes automated multi-role validation across 4 access tiers (Super Admin, Admin, Pendamping, Penerima Bantuan), security injection resilience tests (SQLi/XSS), MD5 checksum and byte-size verification for downloaded document templates, comprehensive network broken link crawlers, and data-driven stress tests across 100 beneficiary test accounts.",
+      overview: "An automated quality assurance and SDET framework engineered for the ConnectHub Learning Management System. The framework executes automated multi-role validation across 4 access tiers (Super Admin, Admin, Pendamping, Penerima Bantuan), security injection resilience tests (SQLi/XSS), MD5 checksum and byte-size verification for downloaded document templates, comprehensive network broken link crawlers, and data-driven stress tests across 100 beneficiary test accounts.",
       techStack: ["Playwright Test", "TypeScript 5", "Node.js", "Page Object Model (POM)", "Data-Driven Testing (DDT)", "Security Hardening", "MD5 Baseline Checksum"],
       github: null,
       demoUrl: null,
