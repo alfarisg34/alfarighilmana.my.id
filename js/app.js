@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTimeline();
   renderSkills();
   renderProjects('all');
-  renderDNSGuide();
   initProjectFilters();
   initModal();
   initScrollSpy();
@@ -370,45 +369,7 @@ function closeModal() {
 }
 
 /* ==========================================================================
-   7. HOSTINGER DNS & VERCEL GUIDE
-   ========================================================================== */
-function renderDNSGuide() {
-  const recordsContainer = document.getElementById('dns-records-container');
-  const stepsContainer = document.getElementById('dns-steps-container');
-  const data = window.PORTFOLIO_DATA.dnsGuide;
-  const icons = window.ICONS;
-
-  if (recordsContainer && data.records) {
-    recordsContainer.innerHTML = data.records.map(rec => `
-      <div class="dns-record-box">
-        <div class="dns-record-header">
-          <span class="record-type">Type: ${rec.type}</span>
-          <span class="badge badge-cyan">Host: ${rec.name}</span>
-        </div>
-        <div class="record-val-row">
-          <span>${rec.value}</span>
-          <button class="copy-btn" title="Copy Record Value" onclick="copyToClipboard('${rec.value}', 'DNS Record (${rec.type}) copied!')">
-            ${icons.copy}
-          </button>
-        </div>
-        <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem;">${rec.desc}</p>
-      </div>
-    `).join('');
-  }
-
-  if (stepsContainer && data.steps) {
-    stepsContainer.innerHTML = data.steps.map(s => `
-      <div class="step-card">
-        <div class="step-num">${s.step}</div>
-        <div class="step-title">${s.title}</div>
-        <div class="step-desc">${s.desc}</div>
-      </div>
-    `).join('');
-  }
-}
-
-/* ==========================================================================
-   8. UTILITIES (CLIPBOARD & TOAST)
+   7. UTILITIES (CLIPBOARD & TOAST)
    ========================================================================== */
 window.copyToClipboard = function(text, successMsg = 'Copied to clipboard!') {
   navigator.clipboard.writeText(text).then(() => {

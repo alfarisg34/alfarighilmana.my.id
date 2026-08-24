@@ -219,49 +219,5 @@ Supabase Cloud (PostgreSQL Database)
        ▼ (Supabase SSR & Client SDK)
 PostgreSQL Database with Row Level Security (RLS) Policies`
     }
-  ],
-
-  dnsGuide: {
-    domain: "alfarighilmana.my.id",
-    registrar: "Hostinger",
-    platform: "Vercel",
-    records: [
-      {
-        type: "A",
-        name: "@",
-        value: "76.76.21.21",
-        ttl: "300 / Default",
-        desc: "Points apex domain alfarighilmana.my.id to Vercel Anycast IP"
-      },
-      {
-        type: "CNAME",
-        name: "www",
-        value: "cname.vercel-dns.com",
-        ttl: "300 / Default",
-        desc: "Points subdomain www.alfarighilmana.my.id to Vercel CNAME"
-      }
-    ],
-    steps: [
-      {
-        step: "1",
-        title: "Deploy Repository to Vercel",
-        desc: "Push this repository to GitHub (`alfarisg34/alfarighilmana.my.id`) and import it on Vercel Dashboard."
-      },
-      {
-        step: "2",
-        title: "Add Custom Domain in Vercel",
-        desc: "Go to Vercel Project Settings > Domains, and add `alfarighilmana.my.id` and `www.alfarighilmana.my.id`."
-      },
-      {
-        step: "3",
-        title: "Configure Hostinger DNS Zone",
-        desc: "Log in to Hostinger hPanel > Domains > alfarighilmana.my.id > DNS / Name Servers, and insert the A & CNAME records."
-      },
-      {
-        step: "4",
-        title: "Automatic SSL & Propagation",
-        desc: "Vercel will automatically provision a free Let's Encrypt SSL certificate once DNS propagation completes (usually within 5-15 minutes)."
-      }
-    ]
-  }
+  ]
 };
