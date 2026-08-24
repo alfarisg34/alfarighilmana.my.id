@@ -12,7 +12,7 @@ window.PORTFOLIO_DATA = {
     socials: {
       github: "https://github.com/alfarisg34",
       linkedin: "https://id.linkedin.com/in/alfari-ghilmana",
-      email: "alfaris.ghilmana@gmail.com",
+      email: "alfari.ghilmana@gmail.com",
       website: "https://alfarighilmana.my.id"
     },
     metrics: [
