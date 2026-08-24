@@ -153,7 +153,7 @@ Output: Sanitized, 100% Mathematically Valid RAB Format Baru (.xlsx)`
       overview: "Built to replace rigid, laggy family tree diagrams, this platform renders genealogy trees like an interactive RPG world map. Users can pan, zoom, and inspect family histories seamlessly with a radar minimap. Includes custom visualizers for deceased ancestors (sepia vintage filter + grief ribbon), divorce indicators (dashed red line with separation mark), and adopted descendants (teal badge and lineage), alongside client-side image compression (>90% savings) to maintain 60 FPS rendering.",
       techStack: ["React 18", "TypeScript 5", "Vite 6", "Supabase PostgreSQL", "Canvas 2D API", "Tailwind CSS", "Vercel"],
       github: "https://github.com/alfarisg34/family-tree",
-      demoUrl: "https://family-tree-demo.vercel.app",
+      demoUrl: "https://familytree.alfarighilmana.my.id/",
       stats: [
         { label: "Rendering Rate", value: "60 FPS" },
         { label: "Media Compression", value: ">90%" },
@@ -188,10 +188,10 @@ Supabase Cloud (PostgreSQL Database)
       featured: true,
       badge: "Fullstack OS",
       tagline: "Comprehensive personal and organizational financial dashboard featuring real-time multi-account ledgers, interactive Recharts analytics, in-line mathematical evaluator, and Supabase SSR auth.",
-      overview: "An enterprise-grade financial management platform developed with Next.js 16 (App Router), React 19, and Supabase. Enables users to manage multiple fund sources (Bank BCA, Mandiri, Cash, E-wallets), track budget allocations against actual spending with threshold alerts, execute double-entry inter-account transfers, and perform swift data entry using an integrated in-line mathematical evaluation calculator (`AmountCalculatorInput`).",
+      overview: "An enterprise-grade financial management platform developed with Next.js 16 (App Router), React 19, and Supabase. Enables users to manage multiple fund sources (Bank BCA, Mandiri, Cash, E-wallets), track budget allocations against actual spending with threshold alerts, execute double-entry inter-account transfers, and perform swift data entry using an integrated in-line mathematical evaluation calculator (\`AmountCalculatorInput\`).",
       techStack: ["Next.js 16 (App Router)", "React 19", "TypeScript", "Tailwind CSS v4", "Supabase SSR Auth", "PostgreSQL", "Recharts", "Lucide Icons"],
       github: "https://github.com/alfarisg34/financial-dashboard",
-      demoUrl: "https://financial-dashboard-demo.vercel.app",
+      demoUrl: "https://financialdashboard.alfarighilmana.my.id/",
       stats: [
         { label: "Next.js Version", value: "v16.2" },
         { label: "Security", value: "SSR + RLS" },

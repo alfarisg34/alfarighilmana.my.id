@@ -84,3 +84,26 @@ Panduan langkah demi langkah menghubungkan repositori portfolio ini ke **Vercel*
 - Propagasi DNS biasanya memakan waktu antara **5 menit hingga 1 jam** (maksimal 24 jam tergantung ISP).
 - Setelah DNS terdeteksi, Vercel akan otomatis menerbitkan sertifikat **SSL (HTTPS)** gratis dari Let's Encrypt.
 - Buka browser dan akses **`https://alfarighilmana.my.id`** untuk memastikan website portfolio Anda sudah aktif!
+
+---
+
+## 6. Konfigurasi Subdomain untuk Proyek Lain (Family Tree & Financial Dashboard)
+
+Untuk menghubungkan project Vercel lainnya ke subdomain `alfarighilmana.my.id`:
+
+### A. Subdomain Family Tree (`https://familytree.alfarighilmana.my.id/`)
+1. Di project Vercel **family-tree** > **Settings** > **Domains** > tambahkan `familytree.alfarighilmana.my.id`.
+2. Di **Hostinger hPanel** > **DNS Zone** > Tambahkan CNAME Record:
+   - **Type**: `CNAME`
+   - **Name / Host**: `familytree`
+   - **Points to / Target**: `cname.vercel-dns.com`
+   - **TTL**: `300` / `14400`
+
+### B. Subdomain Financial Dashboard (`https://financialdashboard.alfarighilmana.my.id/`)
+1. Di project Vercel **financial-dashboard** > **Settings** > **Domains** > tambahkan `financialdashboard.alfarighilmana.my.id`.
+2. Di **Hostinger hPanel** > **DNS Zone** > Tambahkan CNAME Record:
+   - **Type**: `CNAME`
+   - **Name / Host**: `financialdashboard`
+   - **Points to / Target**: `cname.vercel-dns.com`
+   - **TTL**: `300` / `14400`
+
