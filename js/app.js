@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const data = window.PORTFOLIO_DATA;
   const icons = window.ICONS;
 
+  initThemeToggle();
   initNavigation();
   renderHeroStats();
   renderTimeline();
@@ -17,6 +18,34 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initScrollReveal();
 });
+
+/* ==========================================================================
+   0. THEME SWITCHER
+   ========================================================================== */
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('theme-toggle-btn');
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  
+  applyTheme(savedTheme);
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const toggleBtn = document.getElementById('theme-toggle-btn');
+  if (toggleBtn && window.ICONS) {
+    toggleBtn.innerHTML = theme === 'dark' ? window.ICONS.sun : window.ICONS.moon;
+    toggleBtn.setAttribute('title', theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+  }
+}
 
 /* ==========================================================================
    1. NAVIGATION & SCROLL
@@ -313,7 +342,7 @@ function openCaseStudyModal(projectId) {
       <h4 style="font-size: 1.2rem; color: var(--primary-cyan); margin-bottom: 0.5rem;">System Architecture & Execution Pipeline</h4>
       <p style="font-size: 0.95rem; color: var(--text-secondary);">End-to-end data flow and computational stages designed for high reliability and zero runtime data corruption.</p>
     </div>
-    <div class="project-visual-preview" style="background: #020617; border-color: rgba(56, 189, 248, 0.4);">
+    <div class="project-visual-preview" style="background: var(--bg-code); border-color: rgba(56, 189, 248, 0.4);">
       <pre class="ascii-architecture" style="color: #38bdf8; font-size: 0.85rem; line-height: 1.55;">${project.architecture}</pre>
     </div>
   `;
