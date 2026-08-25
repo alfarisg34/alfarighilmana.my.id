@@ -128,12 +128,29 @@
 
 .mobile-menu-btn {
   display: none;
-  background: transparent;
+  background: var(--bg-card-subtle);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  padding: 0.5rem;
-  border-radius: var(--radius-sm);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.mobile-menu-btn:hover {
+  background: var(--border-subtle);
+  color: var(--primary-cyan);
+}
+
+.nav-mobile-cta {
+  display: none;
+}
+
+.nav-desktop-cta {
+  display: inline-flex;
 }
 
 /* ==========================================================================
