@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHeroStats();
   renderTimeline();
   renderSkills();
+  renderCertifications();
   renderProjects('all');
   initProjectFilters();
   initModal();
@@ -194,6 +195,60 @@ function renderSkills() {
       </div>
     `;
   }).join('');
+}
+
+/* ==========================================================================
+   4.5 LICENSES & CERTIFICATIONS
+   ========================================================================== */
+function renderCertifications() {
+  const container = document.getElementById('certifications-container');
+  const data = window.PORTFOLIO_DATA;
+  const icons = window.ICONS;
+
+  if (!container || !data || !data.certifications) return;
+
+  container.innerHTML = data.certifications.map(cert => `
+    <div class="cert-card reveal">
+      <div>
+        <div class="cert-card-top">
+          <div>
+            <span class="cert-badge-pill">
+              ${icons[cert.icon] || icons.award}
+              <span>${cert.badge}</span>
+            </span>
+            <h3 class="cert-card-title" style="margin-top: 0.75rem;">${cert.title}</h3>
+          </div>
+          <div class="cert-icon-box">
+            ${icons[cert.icon] || icons.award}
+          </div>
+        </div>
+
+        <div class="cert-issuer-row">
+          <span class="cert-issuer-name">${cert.issuer}</span>
+          <span>·</span>
+          <span class="cert-issue-date">${cert.issueDate}</span>
+          ${cert.credentialId ? `<span class="cert-issue-date" style="background: rgba(56, 189, 248, 0.08); padding: 0.15rem 0.5rem; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.2);">ID: ${cert.credentialId}</span>` : ''}
+        </div>
+
+        <div class="cert-skills-wrap">
+          ${cert.skills.map(s => `<span class="cert-skill-pill">${s}</span>`).join('')}
+        </div>
+      </div>
+
+      <div class="cert-card-footer">
+        <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--primary-emerald); font-weight: 600;">
+          ${icons.check}
+          <span>Verified Credential</span>
+        </div>
+        ${cert.credentialUrl ? `
+          <a href="${cert.credentialUrl}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="padding: 0.35rem 0.85rem; font-size: 0.8rem;">
+            <span>Verify</span>
+            ${icons.external}
+          </a>
+        ` : ''}
+      </div>
+    </div>
+  `).join('');
 }
 
 /* ==========================================================================

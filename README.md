@@ -15,15 +15,25 @@ This portfolio showcases software systems, computational models, and fullstack c
    - Automates 20-column side-by-side matrices (SEMULA vs. MENJADI vs. SELISIH), dynamic bottom-up hierarchical SUM recalculation, Laporan FA Detail (16 Segmen) reconciliation, multiplier parsing, and TTE signature blocks.
    - *Stack*: Node.js, Express.js, ExcelJS, Vanilla JS/CSS.
 
-2. **Interactive Family Tree Map Explorer**
+2. **Telegram PDF & Bimtek Poster to Google Calendar Automation (n8n & Gemini AI Vision)**
+   - *Multimodal AI Vision OCR & Autonomous Event Scheduling Pipeline*
+   - Automatically parses government invitation letters (PDF) and webinar flyers (JPG/PNG) via Telegram, extracts agenda schedules, meeting links, and Jam Pelajaran (JP) training credits with Gemini 2.5 Flash Multimodal OCR, and creates structured Google Calendar events.
+   - *Stack*: n8n Workflow Engine, Google Gemini 2.5 Flash Multimodal AI, Telegram Bot API, Google Calendar API (OAuth2), Node.js.
+
+3. **Interactive Family Tree Map Explorer**
    - *RPG/Map-Style Canvas Genealogy Explorer with Dynamic LOD*
    - 60 FPS Canvas Pan & Zoom navigation, 3-tier dynamic Level of Detail (LOD), client-side canvas compression (>90% file size reduction), sepia vintage filter for deceased members, divorce lines, adoptive badges, and Supabase PostgreSQL syncing.
    - *Stack*: React 18, TypeScript 5, Vite 6, Tailwind CSS, Supabase PostgreSQL, Canvas 2D API.
 
-3. **Smart Financial & Budget Intelligence Platform**
+4. **Smart Financial & Budget Intelligence Platform**
    - *Fullstack Wealth OS & Multi-Wallet Cashflow Management*
    - Real-time multi-account ledger (BCA, Mandiri, Cash, Wallets), Recharts interactive cash flow & burn rate analytics, in-line mathematical evaluator calculator (`AmountCalculatorInput`), Supabase SSR Auth + RLS, and Admin governance panel.
    - *Stack*: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, Supabase, Recharts.
+
+5. **ConnectHub LMS — SDET & Automated QA Architecture**
+   - *End-to-End Test Automation Framework, Multi-Role RBAC & Security Hardening*
+   - Page Object Model test architecture, 100-batch data-driven stress runner, MD5 template checksum validation, and automated SQLi/XSS resilience verification.
+   - *Stack*: Playwright Test, TypeScript 5, Node.js, Page Object Model (POM), Data-Driven Testing (DDT).
 
 ---
 

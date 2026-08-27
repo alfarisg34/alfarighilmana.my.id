@@ -13,6 +13,9 @@ window.PORTFOLIO_DATA = {
       github: "https://github.com/alfarisg34",
       linkedin: "https://id.linkedin.com/in/alfari-ghilmana",
       email: "alfari.ghilmana@gmail.com",
+      whatsapp: "https://wa.me/6281290423000",
+      phone: "+62 812-9042-3000",
+      phoneRaw: "081290423000",
       website: "https://alfarighilmana.my.id"
     },
     metrics: [
@@ -44,26 +47,142 @@ window.PORTFOLIO_DATA = {
 
   experience: [
     {
-      role: "Software Engineer & Budget Systems Specialist",
-      company: "Kementerian Ketenagakerjaan RI (Kemnaker)",
-      department: "Direktorat Bina Perluasan Kesempatan Kerja",
-      period: "2024 - Present",
-      description: "Designed and engineered automated budget processing systems (Excel Processor V3) transforming legacy Satker budget documents into standard 20-column RAB matrices, reconciling multi-segment financial accounts, and ensuring zero-defect formula generation.",
+      role: "Penata Kelola Sistem dan Teknologi Informasi",
+      company: "Kementerian Ketenagakerjaan Republik Indonesia (Kemnaker)",
+      department: "Ditjen Binapenta & PKK · Direktorat Bina Perluasan Kesempatan Kerja",
+      period: "May 2025 - Present",
+      description: "Leading government budget computing systems and automated workflow modernization. Engineered the Excel Processor V3 system to convert Satker budget files into standardized 20-column RAB matrices, built Laporan FA Detail (16 Segmen) reconciliation pipelines, and developed autonomous AI-powered scheduling workflows.",
       highlights: [
         "Architected Node.js/ExcelJS automation pipeline saving 95%+ of manual clerical auditing time.",
         "Engineered regex multiplier parser for complex volume matrices like `[24 org x 10 kl]`.",
-        "Integrated automated Laporan FA Detail (16 Segmen) reconciliation."
+        "Built automated 16-segment FA Detail reconciliation and zero-touch n8n Gemini Multimodal AI scheduling."
       ]
     },
     {
-      role: "Full Stack & Web Application Engineer",
-      company: "Independent / Specialized Engineering Projects",
-      period: "2022 - Present",
-      description: "Architected modern web systems across interactive map exploration, cloud genealogy trees, and multi-wallet wealth management platforms using Next.js, React, TypeScript, Supabase, and Tailwind CSS.",
+      role: "Software Development Engineer in Test (SDET)",
+      company: "OLX Indonesia",
+      department: "Quality Engineering & Test Automation",
+      period: "October 2023 - May 2025",
+      description: "Engineered scalable end-to-end automated testing frameworks across mobile and web platforms. Authored Page Object Model (POM) test architecture, automated API services, stress testing, and continuous quality verification pipelines.",
       highlights: [
-        "Engineered Canvas Pan & Zoom engine with dynamic Level of Detail (LOD) and client-side canvas compression.",
-        "Built multi-tenant financial OS with in-line math parsing, double-entry transfer bookkeeping, and Recharts analytics."
+        "Architected Page Object Model (POM) testing suites for mission-critical core user journeys.",
+        "Implemented automated security vulnerability tests (SQLi/XSS) and 100-batch concurrent stress test runners.",
+        "Designed MD5 baseline checksum and byte-length download verification for zero asset corruption."
       ]
+    },
+    {
+      role: "Technical Consultant Program",
+      company: "PT Pro Sigmaka Mandiri",
+      department: "Enterprise Technology Solutions",
+      period: "July 2023 - May 2025",
+      description: "Delivered technical consulting and specialized software development for enterprise clients, optimizing backend architectures, database schemas, and continuous integration workflows.",
+      highlights: [
+        "Consulted on cloud backend scalability, API security, and database indexing strategies.",
+        "Collaborated across multidisciplinary engineering teams to deliver robust enterprise web solutions."
+      ]
+    },
+    {
+      role: "Backend Web Developer",
+      company: "PT. Cakra Radha Mustika (Kalbe Group)",
+      department: "Digital Systems & Financial Technology",
+      period: "September 2021 - May 2022",
+      description: "Engineered core backend services and database architectures responsible for financial transaction tracking, expense auditing, and internal reporting systems.",
+      highlights: [
+        "Engineered scalable REST APIs to track financial transactions and ledger records.",
+        "Optimized relational database queries ensuring accurate financial reporting and data consistency."
+      ]
+    },
+    {
+      role: "Backend Web Developer (Team Lead)",
+      company: "Big! Force Festival 2021",
+      department: "Universitas Padjadjaran Arts & Sports Event",
+      period: "June 2021 - September 2021",
+      description: "Led an engineering team of 4 to architect and build a full-featured web portal for university-wide arts and sports competitions, contestant registrations, and administrative scoring.",
+      highlights: [
+        "Led team of 4 developers and served as primary technical point of contact.",
+        "Built backend REST APIs using PHP (Laravel) and MySQL for contestant registration and live scoring.",
+        "Designed comprehensive admin dashboard for competition management and participant workflows."
+      ]
+    }
+  ],
+
+  certifications: [
+    {
+      id: "web-ai",
+      title: "Belajar Penerapan AI di Aplikasi Web",
+      issuer: "Dicoding Indonesia",
+      issueDate: "Jul 2026",
+      credentialId: "1OP8RQV61ZQK",
+      skills: ["Computer Vision", "Generative AI in Browser", "Web AI", "Client-Side ML", "50 Hours"],
+      badge: "Web AI & Vision (Mahir)",
+      icon: "zap",
+      credentialUrl: "https://www.dicoding.com/certificates/1OP8RQV61ZQK"
+    },
+    {
+      id: "ml-gcp",
+      title: "Belajar Penerapan Machine Learning dengan Google Cloud",
+      issuer: "Dicoding Indonesia & Google Cloud",
+      issueDate: "Aug 2026",
+      credentialId: "ERZR791GNZYV",
+      skills: ["Google Cloud Platform", "Vertex AI", "TensorFlow in Production", "Compute & App Engine", "40 Hours"],
+      badge: "Machine Learning & GCP (Mahir)",
+      icon: "cpu",
+      credentialUrl: "https://www.dicoding.com/certificates/ERZR791GNZYV"
+    },
+    {
+      id: "prompt-eng",
+      title: "Prompt Engineering untuk Software Developer",
+      issuer: "Dicoding Indonesia",
+      issueDate: "May 2026",
+      credentialId: "98XW00LL4XM3",
+      skills: ["Prompt Engineering", "LLM Integration", "AI-Assisted Coding", "Generative AI Patterns", "16 Hours"],
+      badge: "Prompt Engineering",
+      icon: "sparkles",
+      credentialUrl: "https://www.dicoding.com/certificates/98XW00LL4XM3"
+    },
+    {
+      id: "ai-foundations",
+      title: "Belajar Dasar AI",
+      issuer: "Dicoding Indonesia",
+      issueDate: "May 2026",
+      credentialId: "JMZVO0M7JXN9",
+      skills: ["Artificial Intelligence", "Deep Learning", "Machine Learning Foundations", "Neural Networks", "10 Hours"],
+      badge: "AI Fundamentals",
+      icon: "zap",
+      credentialUrl: "https://www.dicoding.com/certificates/JMZVO0M7JXN9"
+    },
+    {
+      id: "gcp-foundations",
+      title: "Belajar Dasar Google Cloud",
+      issuer: "Dicoding Indonesia & Google Cloud",
+      issueDate: "May 2026",
+      credentialId: "1OP8R7G4QZQK",
+      skills: ["Google Cloud Infrastructure", "Compute Engine", "Cloud Storage", "IAM & Cloud Security"],
+      badge: "Google Cloud Foundations",
+      icon: "globe",
+      credentialUrl: "https://www.dicoding.com/certificates/1OP8R7G4QZQK"
+    },
+    {
+      id: "project-mgmt",
+      title: "Belajar Dasar Manajemen Proyek",
+      issuer: "Dicoding Indonesia & Google",
+      issueDate: "Jul 2026",
+      credentialId: "KEXLQK5DYPG2",
+      skills: ["Project Management", "Agile & Scrum", "Risk Management", "SDLC Methodologies"],
+      badge: "Project Management",
+      icon: "layers",
+      credentialUrl: "https://www.dicoding.com/certificates/KEXLQK5DYPG2"
+    },
+    {
+      id: "flutter-ml",
+      title: "Belajar Penerapan Machine Learning untuk Flutter",
+      issuer: "Dicoding Indonesia",
+      issueDate: "2026",
+      credentialId: "Academy 758",
+      skills: ["Flutter ML", "Google ML Kit", "LiteRT (TensorFlow Lite)", "Mobile Generative AI"],
+      badge: "Mobile ML",
+      icon: "cpu",
+      credentialUrl: "https://www.dicoding.com/academies/758"
     }
   ],
 
@@ -78,16 +197,18 @@ window.PORTFOLIO_DATA = {
     ],
     backend: [
       { name: "Node.js & Express", level: 95, icon: "server" },
+      { name: "PHP & Laravel", level: 90, icon: "code" },
       { name: "ExcelJS & Spreadsheet Engines", level: 98, icon: "spreadsheet" },
-      { name: "REST API Design", level: 94, icon: "zap" },
-      { name: "Python / Data Scripts", level: 85, icon: "code" },
-      { name: "Authentication & RBAC", level: 90, icon: "shield" }
+      { name: "n8n Workflow Automation", level: 94, icon: "zap" },
+      { name: "REST API & Webhooks", level: 94, icon: "zap" },
+      { name: "Python / Data Scripts", level: 85, icon: "code" }
     ],
     databaseCloud: [
       { name: "Supabase & PostgreSQL", level: 92, icon: "database" },
+      { name: "MySQL & MongoDB", level: 92, icon: "database" },
+      { name: "Google Cloud & AI Studio", level: 92, icon: "globe" },
       { name: "Row Level Security (RLS)", level: 90, icon: "shield" },
       { name: "Vercel Cloud Deployment", level: 95, icon: "globe" },
-      { name: "DNS & Hostinger hPanel", level: 92, icon: "server" },
       { name: "Git & GitHub CI/CD", level: 94, icon: "code" }
     ],
     testingQA: [
@@ -99,9 +220,10 @@ window.PORTFOLIO_DATA = {
     ],
     architecture: [
       { name: "Dynamic Bottom-Up SUM Algorithms", level: 96 },
+      { name: "Multimodal AI Vision & OCR Pipelines", level: 94 },
+      { name: "Computer Vision & LangGraph", level: 90 },
       { name: "Client-Side Media Compression", level: 92 },
-      { name: "Level of Detail (LOD) Navigation", level: 90 },
-      { name: "Agile Development & GIS Systems", level: 94 }
+      { name: "Agile SDLC & Project Management", level: 94 }
     ]
   },
 
@@ -147,6 +269,56 @@ Express API Server (/api/process & /api/process-with-fa)
        │
        ▼
 Output: Sanitized, 100% Mathematically Valid RAB Format Baru (.xlsx)`
+    },
+    {
+      id: "n8n-calendar-automation",
+      title: "Telegram PDF & Bimtek Poster to Google Calendar Automation",
+      subtitle: "Intelligent Event Extraction & Scheduling via Gemini 2.5 Flash Vision OCR & n8n",
+      category: "automation",
+      categoryName: "AI & Workflow Automation",
+      featured: true,
+      badge: "Multimodal AI & n8n",
+      tagline: "Autonomous event scheduling pipeline parsing official invitation letters (PDF) and webinar flyers (JPG/PNG) via Telegram, extracting schedule metadata & JP (Jam Pelajaran) using Gemini 2.5 Flash AI Vision, and automatically syncing structured Google Calendar events.",
+      overview: "An automated document intelligence and calendar synchronization system engineered using n8n, Google Gemini 2.5 Flash Multimodal Vision AI, and the Telegram Bot API. It converts manual calendar entry of official government invitations (Surat Undangan Dinas) and training flyers (Bimtek, Webinar, Workshop) into an autonomous zero-touch pipeline. When a user sends a PDF document or poster image to the Telegram bot, the system validates the payload, downloads high-resolution binaries, triggers Gemini 2.5 Flash Vision OCR with structured schema prompts, extracts event titles, dates, time boundaries (with ISO-8601 WIB normalization), Jam Pelajaran (JP) training credit hours, speaker rosters, meeting links/credentials (Zoom/GMeet/YouTube), and directly publishes structured entries into Google Calendar with automated Telegram confirmation receipts.",
+      techStack: ["n8n Workflow Engine", "Google Gemini 2.5 Flash", "Multimodal Vision OCR", "Telegram Bot API", "Google Calendar API", "OAuth2", "JavaScript / Node.js"],
+      github: "https://github.com/alfarisg34/n8n-workflow",
+      demoUrl: null,
+      stats: [
+        { label: "Extraction Speed", value: "<3.5s" },
+        { label: "Supported Formats", value: "PDF, JPG, PNG" },
+        { label: "AI Vision Model", value: "Gemini 2.5" },
+        { label: "Schedule Sync", value: "100% Automated" }
+      ],
+      highlights: [
+        "**Multimodal Vision OCR & Parsing**: Employs Gemini 2.5 Flash Vision to extract unstructured text, multi-speaker rosters, agenda dates, and meeting credentials directly from complex multi-page PDFs and raster poster images.",
+        "**Dynamic Temporal & Timezone Normalization**: Parses diverse Indonesian datetime formats (e.g., '12 Agustus 2026') and converts ambiguous durations (such as 's.d. selesai' default fallbacks) into strict ISO-8601 timestamps anchored to Asia/Jakarta (WIB / UTC+7).",
+        "**Intelligent JP (Jam Pelajaran) Credit Harvester**: Automatically identifies and structures civil servant and professional training hours (e.g., `3 JP`, `32 JP`) prominently into calendar event metadata and Telegram notifications.",
+        "**Multi-Channel Telegram Bot Integration**: Bidirectional webhook listener validating attachment mime-types, issuing real-time processing receipts, and returning success confirmations with direct calendar event deep-links.",
+        "**Google Calendar OAuth2 Synchronization**: Automatically formats structured calendar entries with speaker listings, Zoom/GMeet meeting IDs & passcodes, registration links, and formatted event descriptions without human clerical overhead."
+      ],
+      architecture: `Telegram Inbound Message (PDF Document / Poster Image)
+       │
+       ▼ (Telegram Trigger Webhook)
+n8n Workflow Execution Engine
+       │
+       ├─ Step 01: Validate Mime-Type & Extract Attachment Info
+       ├─ Step 02: Conditional Guard (Route Non-Supported Files to Rejection Notice)
+       ├─ Step 03: Dispatch Real-Time Processing Notice to User
+       ├─ Step 04: Stream High-Resolution Binary File (PDF / JPG / PNG / WEBP)
+       ├─ Step 05: Prepare Multimodal Vision OCR Payload & Base64 Encoding
+       │
+       ▼ (Google AI REST API)
+Google Gemini 2.5 Flash Multimodal Vision Model
+       ├─ Zero-Shot Document Understanding & Structured JSON Extraction
+       ├─ Schema: title, start_time, end_time, jp, is_online, location, meeting_link, speakers
+       │
+       ▼
+Data Sanitizer & ISO-8601 (WIB / UTC+7) Time Normalizer
+       │
+       ├─ Step 09: Create Structured Event via Google Calendar API (OAuth2)
+       │
+       ▼
+Step 10: Dispatch Success Confirmation & Deep-Link Receipt to Telegram Chat`
     },
     {
       id: "family-tree",
