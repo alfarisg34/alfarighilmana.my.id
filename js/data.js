@@ -177,12 +177,12 @@ window.PORTFOLIO_DATA = {
       id: "flutter-ml",
       title: "Belajar Penerapan Machine Learning untuk Flutter",
       issuer: "Dicoding Indonesia",
-      issueDate: "2026",
-      credentialId: "Academy 758",
-      skills: ["Flutter ML", "Google ML Kit", "LiteRT (TensorFlow Lite)", "Mobile Generative AI"],
-      badge: "Mobile ML",
+      issueDate: "Jul 2026",
+      credentialId: "MRZMVK75RZYQ",
+      skills: ["On-Device Machine Learning", "Image Classification", "Google ML Kit", "LiteRT (TensorFlow Lite)", "Flutter AI"],
+      badge: "Mobile ML (Mahir)",
       icon: "cpu",
-      credentialUrl: "https://www.dicoding.com/academies/758"
+      credentialUrl: "https://www.dicoding.com/certificates/MRZMVK75RZYQ"
     }
   ],
 

@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initModal();
   initScrollSpy();
   initScrollReveal();
+  initBackToTop();
 });
 
 /* ==========================================================================
@@ -565,3 +566,40 @@ function initScrollReveal() {
 
   reveals.forEach(el => observer.observe(el));
 }
+
+/* ==========================================================================
+   10. FLYING BACK-TO-TOP BUTTON
+   ========================================================================== */
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top-btn');
+  if (!btn) return;
+
+  // Render flying arrow SVG if empty
+  if (!btn.innerHTML.trim() && window.ICONS && window.ICONS.arrowFlying) {
+    btn.innerHTML = window.ICONS.arrowFlying;
+  }
+
+  // Scroll threshold listener
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 320) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  // Click handler with launch animation and smooth scroll
+  btn.addEventListener('click', () => {
+    btn.classList.add('launching');
+    
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+    setTimeout(() => {
+      btn.classList.remove('launching');
+    }, 600);
+  });
+}
+
