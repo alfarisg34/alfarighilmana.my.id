@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-31T15:56:30.000Z",
+  "title": "Design System: Alfari Sidnan Ghilmana Portfolio & Engineering Showcase",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "High-Precision Sky Cyan",
+        "canonical": "#0284c7",
+        "tonalRamp": ["#082f49", "#0c4a6e", "#0369a1", "#0284c7", "#38bdf8", "#7dd3fc", "#bae6fd", "#e0f2fe"]
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Deep Spectrum Indigo",
+        "canonical": "#4f46e5",
+        "tonalRamp": ["#1e1b4b", "#312e81", "#3730a3", "#4338ca", "#4f46e5", "#6366f1", "#818cf8", "#e0e7ff"]
+      },
+      "tertiary": {
+        "role": "tertiary",
+        "displayName": "Operational Emerald",
+        "canonical": "#059669",
+        "tonalRamp": ["#022c22", "#064e3b", "#065f46", "#047857", "#059669", "#10b981", "#34d399", "#d1fae5"]
+      },
+      "amber": {
+        "role": "accent",
+        "displayName": "Alert Amber",
+        "canonical": "#d97706",
+        "tonalRamp": ["#451a03", "#78350f", "#92400e", "#b45309", "#d97706", "#f59e0b", "#fbbf24", "#fef3c7"]
+      },
+      "rose": {
+        "role": "accent",
+        "displayName": "Signal Rose",
+        "canonical": "#e11d48",
+        "tonalRamp": ["#4c0519", "#881337", "#9f1239", "#be123c", "#e11d48", "#f43f5e", "#fb7185", "#ffe4e6"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Slate Canvas",
+        "canonical": "#f8fafc",
+        "tonalRamp": ["#020617", "#0f172a", "#1e293b", "#334155", "#64748b", "#94a3b8", "#e2e8f0", "#f8fafc"]
+      },
+      "neutral-surface": {
+        "role": "neutral",
+        "displayName": "Pure Surface",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#000000", "#18181b", "#27272a", "#3f3f46", "#71717a", "#a1a1aa", "#e4e4e7", "#ffffff"]
+      },
+      "neutral-code": {
+        "role": "neutral",
+        "displayName": "Terminal Obsidian Navy",
+        "canonical": "#0b1120",
+        "tonalRamp": ["#030712", "#0b1120", "#111a2e", "#1e293b", "#334155", "#475569", "#64748b", "#cbd5e1"]
+      },
+      "text-primary": {
+        "role": "neutral",
+        "displayName": "Text Slate Black",
+        "canonical": "#0f172a",
+        "tonalRamp": ["#020617", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#cbd5e1", "#f8fafc"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (Outfit 900)",
+        "purpose": "Hero headline declarations and primary statements."
+      },
+      "headline": {
+        "displayName": "Headline (Outfit 700)",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title (Outfit 800)",
+        "purpose": "Project and container titles."
+      },
+      "body": {
+        "displayName": "Body (Plus Jakarta Sans)",
+        "purpose": "Case study paragraphs and explanations."
+      },
+      "label": {
+        "displayName": "Label / Mono (JetBrains Mono)",
+        "purpose": "Technical metrics, code tags, and status pills."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-sm",
+        "value": "0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03)",
+        "purpose": "Resting state for subtle chips and buttons."
+      },
+      {
+        "name": "shadow-card",
+        "value": "0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04)",
+        "purpose": "Resting state for project cards and containers."
+      },
+      {
+        "name": "shadow-hover",
+        "value": "0 20px 30px -10px rgba(15, 23, 42, 0.12), 0 10px 15px -5px rgba(15, 23, 42, 0.06)",
+        "purpose": "Active elevation on hover."
+      },
+      {
+        "name": "shadow-modal",
+        "value": "0 25px 50px -12px rgba(15, 23, 42, 0.25)",
+        "purpose": "Elevated modal dialogs."
+      },
+      {
+        "name": "glow-cyan",
+        "value": "0 0 20px rgba(2, 132, 199, 0.15)",
+        "purpose": "Ambient halo on active controls."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-smooth",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Fluid entrance and hover transitions."
+      },
+      {
+        "name": "duration-fast",
+        "value": "0.25s",
+        "purpose": "Micro-interactions and button hover."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "480px" },
+      { "name": "tablet", "value": "768px" },
+      { "name": "laptop", "value": "1024px" },
+      { "name": "container-max", "value": "1240px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Tactile, high-emphasis pill button for primary calls to action.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"/></svg>Download CV (PDF)</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.92rem; padding: 0.7rem 1.45rem; border-radius: 9999px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.1); background: #0f172a; color: #ffffff; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary:hover { background: #1e293b; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15, 23, 42, 0.25); color: #ffffff; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Frosted white surface button for secondary navigation and external links.",
+      "html": "<button class=\"ds-btn-secondary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 3h6v6\"/><path d=\"M10 14 21 3\"/><path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"/></svg>GitHub Profile</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.92rem; padding: 0.7rem 1.45rem; border-radius: 9999px; cursor: pointer; background: #ffffff; color: #0f172a; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-secondary:hover { background: #f1f5f9; border-color: #94a3b8; color: #0284c7; transform: translateY(-2px); }"
+    },
+    {
+      "name": "Status Pill Indicator",
+      "kind": "chip",
+      "refersTo": "badge-cyan",
+      "description": "Pulsing live availability chip showing operational availability.",
+      "html": "<div class=\"ds-status-pill\"><span class=\"ds-pulse-dot\"></span>Available for High-Impact Software Engineering Roles</div>",
+      "css": ".ds-status-pill { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.4rem 1.25rem; background: rgba(5, 150, 105, 0.08); border: 1px solid rgba(5, 150, 105, 0.25); border-radius: 9999px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 600; color: #059669; backdrop-filter: blur(8px); } .ds-pulse-dot { width: 8px; height: 8px; background-color: #059669; border-radius: 50%; box-shadow: 0 0 10px #059669; animation: dsPulse 2s infinite; } @keyframes dsPulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.6); } 70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(5, 150, 105, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); } }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "badge-cyan",
+      "description": "Interactive pill button for toggling project domain categories.",
+      "html": "<button class=\"ds-filter-btn ds-active\">Enterprise Systems</button><button class=\"ds-filter-btn\">AI & Automation</button>",
+      "css": ".ds-filter-btn { background: #ffffff; border: 1px solid #e2e8f0; color: #475569; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 0.5rem 1.25rem; border-radius: 9999px; cursor: pointer; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); margin-right: 0.5rem; } .ds-filter-btn:hover, .ds-filter-btn.ds-active { background: #0f172a; border-color: #0f172a; color: #ffffff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15); }"
+    },
+    {
+      "name": "Project Card Container",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Elevated card frame with frosted glass styling and hover lift.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-tag\">ENTERPRISE SYSTEM</div><h3 class=\"ds-title\">Kemnaker Excel Processor V3</h3><p class=\"ds-desc\">Automates 20-column budget matrices, hierarchical SUM recalculation, and 16-segment FA Detail reconciliation.</p></div>",
+      "css": ".ds-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 2rem; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-card:hover { border-color: #94a3b8; transform: translateY(-3px); box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.12); } .ds-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; color: #0284c7; margin-bottom: 0.5rem; } .ds-title { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; color: #020617; margin-bottom: 0.5rem; } .ds-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; color: #475569; line-height: 1.6; }"
+    },
+    {
+      "name": "Code Architecture Terminal",
+      "kind": "custom",
+      "refersTo": "neutral-code",
+      "description": "Dark terminal box for ASCII system architecture and data pipelines.",
+      "html": "<div class=\"ds-terminal\"><div class=\"ds-window-bar\"><span class=\"ds-dot red\"></span><span class=\"ds-dot yellow\"></span><span class=\"ds-dot green\"></span><span class=\"ds-win-title\">matrix_engine.ts</span></div><pre class=\"ds-pre\">[Satker Budget] ➔ (41-Col Parse) ➔ [Dynamic Hierarchical SUM]</pre></div>",
+      "css": ".ds-terminal { background: #0b1120; border-radius: 14px; padding: 1.25rem; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(255, 255, 255, 0.1); } .ds-window-bar { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); } .ds-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; } .ds-dot.red { background: #ef4444; } .ds-dot.yellow { background: #f59e0b; } .ds-dot.green { background: #10b981; } .ds-win-title { color: #94a3b8; font-size: 0.75rem; margin-left: 0.5rem; } .ds-pre { color: #38bdf8; font-size: 0.8rem; line-height: 1.4; margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Precision Terminal & Editorial Ledger",
+    "overview": "The visual language balances rigorous mathematical precision with modern editorial clarity. Built as an authoritative platform for senior engineering leaders and technical recruiters, the system rejects noisy decorative gimmicks in favor of crystal-clear typographic hierarchy, ambient frosted surfaces, and high-density technical telemetry.\n\nEvery surface is engineered with deliberate tactile feedback: floating glassmorphic nav bars, crisp code preview terminals, and fluid pill-shaped controls that respond gracefully to user interaction. Ambient radial mesh glows gently illuminate deep slate and dark backgrounds, providing atmospheric warmth without compromising readability or speed.",
+    "keyCharacteristics": [
+      "High-contrast geometric typography with specialized monospace accents for computational metrics.",
+      "Layered frosted glass panels (backdrop-filter: blur(16px)) with hairline border definitions.",
+      "Dynamic dual-mode fidelity (Clean Editorial Light default with an immersive Obsidian Dark mode).",
+      "Concrete data visualization blocks (ASCII architecture schemas, mini metrics grids, live status indicators)."
+    ],
+    "rules": [
+      {
+        "name": "The Telemetry Rarity Rule",
+        "body": "Vivid spectral accents (Cyan, Indigo, Emerald) must occupy ≤15% of any viewport. Their visual impact relies entirely on being framed against expansive, disciplined slate neutrals.",
+        "section": "colors"
+      },
+      {
+        "name": "The Semantic Accent Rule",
+        "body": "Emerald strictly indicates verified computational success or live status; Cyan indicates user action and navigation; Indigo denotes architecture and organizational hierarchy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Code Authenticity Rule",
+        "body": "All architectural schemas, technical stack lists, data volume metrics, and file paths must be set strictly in JetBrains Mono to distinguish raw engineering facts from editorial prose.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glass-Before-Shadow Rule",
+        "body": "Depth is established first by backdrop blur (backdrop-filter: blur(16px)) and 1px border contrast (var(--border-subtle)). Shadows serve only to elevate interacting or hovered elements off the plane.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve the strict three-tier typography hierarchy: Outfit for headings, Plus Jakarta Sans for body, and JetBrains Mono for code, labels, and metrics.",
+      "Do wrap all interactive call-to-action buttons in full pill radius (border-radius: 9999px).",
+      "Do maintain high contrast ratios (WCAG AA compliant, minimum 4.5:1 for normal text and 3:1 for large text/icons) across both Light and Dark modes.",
+      "Do frame code previews and architectural diagrams in dark obsidian terminal boxes (#0b1120), even in Light mode.",
+      "Do provide smooth micro-transitions (all 0.25s cubic-bezier(0.16, 1, 0.3, 1)) and subtle -2px to -3px elevation lifts on hover."
+    ],
+    "donts": [
+      "Don't introduce random border radii (e.g. sharp 2px corners or arbitrary 35px curves); stick strictly to 8px, 14px, 20px, and 9999px.",
+      "Don't use heavy opaque background colors behind navigation or modals; always preserve frosted translucent backdrop blur.",
+      "Don't apply saturated accent gradients (Cyan/Indigo) to whole card backgrounds; reserve gradients for text highlights, active badges, and subtle ambient glows.",
+      "Don't mix unvetted third-party icon libraries or heavy runtime dependencies; use lightweight inline SVGs."
+    ]
+  }
+}

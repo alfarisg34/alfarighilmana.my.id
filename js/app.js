@@ -57,13 +57,20 @@ function initNavigation() {
   const mobileBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
 
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 40) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
-  });
+  }, { passive: true });
 
   if (mobileBtn && navLinks) {
     const hamburgerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
@@ -228,7 +235,7 @@ function renderCertifications() {
           <span class="cert-issuer-name">${cert.issuer}</span>
           <span>·</span>
           <span class="cert-issue-date">${cert.issueDate}</span>
-          ${cert.credentialId ? `<span class="cert-issue-date" style="background: rgba(56, 189, 248, 0.08); padding: 0.15rem 0.5rem; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.2);">ID: ${cert.credentialId}</span>` : ''}
+          ${cert.credentialId ? `<span class="cert-issue-date cert-id-pill">ID: ${cert.credentialId}</span>` : ''}
         </div>
 
         <div class="cert-skills-wrap">
@@ -356,8 +363,10 @@ function initProjectFilters() {
 }
 
 /* ==========================================================================
-   6. CASE STUDY MODAL SYSTEM
+   6. CASE STUDY MODAL SYSTEM (ACCESSIBLE WITH FOCUS TRAP)
    ========================================================================== */
+let previouslyFocusedElement = null;
+
 function initModal() {
   const overlay = document.getElementById('case-study-modal');
   const closeBtn = document.getElementById('modal-close-btn');
@@ -370,8 +379,34 @@ function initModal() {
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+    if (!overlay.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
       closeModal();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+      const focusableElements = Array.from(overlay.querySelectorAll(focusableSelectors))
+        .filter(el => !el.hasAttribute('disabled') && el.offsetParent !== null);
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
     }
   });
 
@@ -394,9 +429,12 @@ function openCaseStudyModal(projectId) {
   const project = window.PORTFOLIO_DATA.projects.find(p => p.id === projectId);
   if (!project) return;
 
+  previouslyFocusedElement = document.activeElement;
+
   const overlay = document.getElementById('case-study-modal');
   const titleEl = document.getElementById('modal-project-title');
   const catEl = document.getElementById('modal-project-category');
+  const closeBtn = document.getElementById('modal-close-btn');
 
   titleEl.textContent = project.title;
   catEl.textContent = `${project.categoryName} · ${project.badge}`;
@@ -404,20 +442,20 @@ function openCaseStudyModal(projectId) {
   // Overview Tab
   const tabOverview = document.getElementById('tab-overview');
   tabOverview.innerHTML = `
-    <div style="margin-bottom: 2rem;">
-      <h4 style="font-size: 1.2rem; color: var(--primary-cyan); margin-bottom: 0.75rem;">Project Summary & Business Value</h4>
-      <p style="font-size: 1rem; line-height: 1.8; color: var(--text-secondary);">${project.overview}</p>
+    <div class="modal-section-block">
+      <h4 class="modal-heading-cyan">Project Summary & Business Value</h4>
+      <p class="modal-text">${project.overview}</p>
     </div>
     
-    <div style="margin-bottom: 2rem;">
-      <h4 style="font-size: 1.2rem; color: var(--primary-indigo); margin-bottom: 1rem;">Core Engineering Highlights</h4>
-      <ul class="timeline-bullets" style="gap: 0.75rem;">
-        ${project.highlights.map(h => `<li style="font-size: 0.95rem; line-height: 1.6;">${h}</li>`).join('')}
+    <div class="modal-section-block">
+      <h4 class="modal-heading-indigo">Core Engineering Highlights</h4>
+      <ul class="timeline-bullets">
+        ${project.highlights.map(h => `<li class="modal-text">${h}</li>`).join('')}
       </ul>
     </div>
 
     <div>
-      <h4 style="font-size: 1.1rem; color: var(--primary-emerald); margin-bottom: 0.75rem;">Technology Stack</h4>
+      <h4 class="modal-heading-emerald">Technology Stack</h4>
       <div class="project-tech-tags">
         ${project.techStack.map(t => `<span class="tech-tag">${t}</span>`).join('')}
       </div>
@@ -427,11 +465,11 @@ function openCaseStudyModal(projectId) {
   // Architecture Tab
   const tabArch = document.getElementById('tab-architecture');
   tabArch.innerHTML = `
-    <div style="margin-bottom: 1.5rem;">
-      <h4 style="font-size: 1.2rem; color: var(--primary-cyan); margin-bottom: 0.5rem;">System Architecture & Execution Pipeline</h4>
-      <p style="font-size: 0.95rem; color: var(--text-secondary);">End-to-end data flow and computational stages designed for high reliability and zero runtime data corruption.</p>
+    <div class="modal-section-block">
+      <h4 class="modal-heading-cyan">System Architecture & Execution Pipeline</h4>
+      <p class="modal-text">End-to-end data flow and computational stages designed for high reliability and zero runtime data corruption.</p>
     </div>
-    <div class="project-visual-preview" style="background: var(--bg-code); border-color: rgba(56, 189, 248, 0.4);">
+    <div class="project-visual-preview modal-preview-box">
       <pre class="ascii-architecture" style="color: #38bdf8; font-size: 0.85rem; line-height: 1.55;">${project.architecture}</pre>
     </div>
   `;
@@ -439,9 +477,9 @@ function openCaseStudyModal(projectId) {
   // Metrics Tab
   const tabMetrics = document.getElementById('tab-metrics');
   tabMetrics.innerHTML = `
-    <div style="margin-bottom: 1.5rem;">
-      <h4 style="font-size: 1.2rem; color: var(--primary-emerald); margin-bottom: 0.5rem;">Key Performance Benchmarks</h4>
-      <p style="font-size: 0.95rem; color: var(--text-secondary);">Measured performance metrics, algorithmic complexity, and system throughput.</p>
+    <div class="modal-section-block">
+      <h4 class="modal-heading-emerald">Key Performance Benchmarks</h4>
+      <p class="modal-text">Measured performance metrics, algorithmic complexity, and system throughput.</p>
     </div>
     <div class="hero-stats-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 2rem;">
       ${project.stats.map(s => `
@@ -483,6 +521,10 @@ function openCaseStudyModal(projectId) {
 
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
+
+  if (closeBtn) {
+    closeBtn.focus();
+  }
 }
 
 function closeModal() {
@@ -490,6 +532,10 @@ function closeModal() {
   if (!overlay) return;
   overlay.classList.remove('active');
   document.body.style.overflow = '';
+
+  if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+    previouslyFocusedElement.focus();
+  }
 }
 
 /* ==========================================================================
@@ -533,25 +579,32 @@ function initScrollSpy() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
 
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollPos = window.scrollY + 200;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        let current = '';
+        const scrollPos = window.scrollY + 200;
 
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      if (scrollPos >= top && scrollPos < top + height) {
-        current = section.getAttribute('id');
-      }
-    });
+        sections.forEach(section => {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            current = section.getAttribute('id');
+          }
+        });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 }
 
 function initScrollReveal() {

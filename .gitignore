@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Impeccable Local Cache & Live Config
+.impeccable/config.local.json
+.impeccable/live/
