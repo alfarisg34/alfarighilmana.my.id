@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initNavigation();
   renderHeroStats();
+  initHeroInspector();
   renderTimeline();
   renderSkills();
   renderCertifications();
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initScrollReveal();
   initBackToTop();
+  initMatrixCanvas();
 });
 
 /* ==========================================================================
@@ -50,51 +52,36 @@ function applyTheme(theme) {
 }
 
 /* ==========================================================================
-   1. NAVIGATION & SCROLL
+   1. NAVIGATION & MOBILE DRAWER
    ========================================================================== */
 function initNavigation() {
   const nav = document.querySelector('.site-nav');
-  const mobileBtn = document.querySelector('.mobile-menu-btn');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
 
-  let ticking = false;
+  // Sticky blur effect on scroll
   window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        if (window.scrollY > 40) {
-          nav.classList.add('scrolled');
-        } else {
-          nav.classList.remove('scrolled');
-        }
-        ticking = false;
-      });
-      ticking = true;
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
     }
   }, { passive: true });
 
-  if (mobileBtn && navLinks) {
-    const hamburgerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
-    const closeSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+  // Mobile Menu Toggle
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('mobile-open');
+      menuBtn.setAttribute('aria-expanded', isOpen);
+    });
 
     const closeMenu = () => {
       navLinks.classList.remove('mobile-open');
-      mobileBtn.classList.remove('active');
-      mobileBtn.setAttribute('aria-expanded', 'false');
-      mobileBtn.innerHTML = hamburgerSvg;
+      menuBtn.setAttribute('aria-expanded', 'false');
     };
 
-    mobileBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = navLinks.classList.toggle('mobile-open');
-      mobileBtn.classList.toggle('active', isOpen);
-      mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      mobileBtn.innerHTML = isOpen ? closeSvg : hamburgerSvg;
-    });
-
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
+      link.addEventListener('click', closeMenu);
     });
 
     document.addEventListener('click', (e) => {
@@ -126,6 +113,69 @@ function renderHeroStats() {
       <div class="stat-sub">${s.sub}</div>
     </div>
   `).join('');
+}
+
+/* ==========================================================================
+   2.5. HERO INTERACTIVE ARCHITECTURE INSPECTOR
+   ========================================================================== */
+function initHeroInspector() {
+  const tabs = document.querySelectorAll('.inspector-tab');
+  const display = document.getElementById('inspector-display-content');
+  const projects = window.PORTFOLIO_DATA?.projects;
+  const icons = window.ICONS;
+
+  if (!tabs.length || !display || !projects) return;
+
+  function renderInspector(projectId) {
+    const project = projects.find(p => p.id === projectId) || projects[0];
+    if (!project) return;
+
+    display.innerHTML = `
+      <div class="inspector-stats-row">
+        ${project.stats.slice(0, 3).map(st => `
+          <div class="inspector-metric-chip">
+            <div class="inspector-metric-val">${st.value}</div>
+            <div class="inspector-metric-lbl">${st.label}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="inspector-ascii-box">
+        <pre class="inspector-ascii-code">${project.architecture}</pre>
+      </div>
+
+      <div style="margin-top: 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+          ${project.techStack.slice(0, 4).map(t => `<span class="tech-tag" style="font-size: 0.7rem; padding: 0.2rem 0.55rem;">${t}</span>`).join('')}
+        </div>
+        <button class="btn btn-primary btn-sm inspect-deep-dive-btn" data-id="${project.id}">
+          <span>Deep Dive Spec</span>
+          ${icons?.arrowRight || '→'}
+        </button>
+      </div>
+    `;
+
+    const deepDiveBtn = display.querySelector('.inspect-deep-dive-btn');
+    if (deepDiveBtn) {
+      deepDiveBtn.addEventListener('click', (e) => {
+        const id = e.currentTarget.getAttribute('data-id');
+        openCaseStudyModal(id);
+      });
+    }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      tabs.forEach(t => t.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      const id = e.currentTarget.getAttribute('data-inspector-id');
+      renderInspector(id);
+    });
+  });
+
+  // Initial render
+  const initialId = tabs[0].getAttribute('data-inspector-id') || 'kemnaker-excel';
+  renderInspector(initialId);
 }
 
 /* ==========================================================================
@@ -273,6 +323,27 @@ function renderProjects(categoryFilter = 'all') {
     ? data 
     : data.filter(p => p.category === categoryFilter);
 
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="empty-filter-state reveal active" style="grid-column: 1 / -1; text-align: center; padding: 4rem 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);">
+        <div style="font-size: 2.25rem; margin-bottom: 0.75rem;">🔍</div>
+        <h4 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-highlight);">No projects found in this category</h4>
+        <p style="color: var(--text-secondary); max-width: 440px; margin: 0 auto 1.5rem; font-size: 0.95rem;">Select another engineering domain or explore all signature projects.</p>
+        <button class="btn btn-primary btn-sm reset-filter-btn">
+          <span>Show All Projects</span>
+        </button>
+      </div>
+    `;
+    const resetBtn = container.querySelector('.reset-filter-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        const allBtn = document.querySelector('.filter-btn[data-category="all"]');
+        if (allBtn) allBtn.click();
+      });
+    }
+    return;
+  }
+
   container.innerHTML = filtered.map(project => `
     <article class="project-card reveal" data-project-id="${project.id}">
       <div class="project-card-body">
@@ -301,11 +372,11 @@ function renderProjects(categoryFilter = 'all') {
 
         <div class="project-card-footer">
           <button class="btn btn-primary btn-sm view-case-study-btn" data-id="${project.id}">
-            <span>Deep Dive Case Study</span>
+            <span>Case Study & Architecture</span>
             ${icons.arrowRight}
           </button>
           ${project.github ? `
-            <a href="${project.github}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+            <a href="${project.github}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" title="View Source Code on GitHub">
               ${icons.github}
               <span>Source Code</span>
             </a>
@@ -313,13 +384,13 @@ function renderProjects(categoryFilter = 'all') {
           ${project.isPrivate ? `
             <span class="badge badge-amber" style="padding: 0.45rem 0.85rem; font-size: 0.8rem;">
               ${icons.shield}
-              <span>Private Enterprise Repo</span>
+              <span>Private Enterprise Repository</span>
             </span>
           ` : ''}
           ${project.demoUrl ? `
-            <a href="${project.demoUrl}" target="_blank" rel="noopener" class="btn btn-outline-emerald btn-sm">
+            <a href="${project.demoUrl}" target="_blank" rel="noopener" class="btn btn-outline-emerald btn-sm" title="Open Interactive Live Demo">
               ${icons.external}
-              <span>Live System</span>
+              <span>Live Demo</span>
             </a>
           ` : ''}
         </div>
@@ -411,16 +482,34 @@ function initModal() {
   });
 
   // Modal Tab Switching
-  const tabBtns = document.querySelectorAll('.modal-tab-btn');
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const tabTarget = btn.getAttribute('data-tab');
+  const tabBtns = Array.from(document.querySelectorAll('.modal-tab-btn'));
+  function selectModalTab(btn) {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const tabTarget = btn.getAttribute('data-tab');
 
-      document.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active'));
-      const activeContent = document.getElementById(`tab-${tabTarget}`);
-      if (activeContent) activeContent.classList.add('active');
+    document.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active'));
+    const activeContent = document.getElementById(`tab-${tabTarget}`);
+    if (activeContent) activeContent.classList.add('active');
+  }
+
+  tabBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      selectModalTab(btn);
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const nextIndex = (index + 1) % tabBtns.length;
+        tabBtns[nextIndex].focus();
+        selectModalTab(tabBtns[nextIndex]);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const prevIndex = (index - 1 + tabBtns.length) % tabBtns.length;
+        tabBtns[prevIndex].focus();
+        selectModalTab(tabBtns[prevIndex]);
+      }
     });
   });
 }
@@ -554,6 +643,8 @@ function showToast(message) {
   if (!container) {
     container = document.createElement('div');
     container.className = 'toast-container';
+    container.setAttribute('role', 'status');
+    container.setAttribute('aria-live', 'polite');
     document.body.appendChild(container);
   }
 
@@ -653,6 +744,131 @@ function initBackToTop() {
     setTimeout(() => {
       btn.classList.remove('launching');
     }, 600);
+  });
+}
+
+/* ==========================================================================
+   11. INTERACTIVE CYBER-CANVAS PARTICLE MATRIX (60 FPS)
+   ========================================================================== */
+function initMatrixCanvas() {
+  const canvas = document.getElementById('matrix-canvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  let animationFrameId;
+  let width, height;
+  let particles = [];
+  const particleCount = window.innerWidth < 768 ? 28 : 50;
+  const maxDistance = 130;
+
+  const mouse = {
+    x: null,
+    y: null,
+    radius: 110
+  };
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
+
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  }, { passive: true });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.x = null;
+    mouse.y = null;
+  }, { passive: true });
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.size = Math.random() * 1.5 + 1;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+
+      // Mouse gravitation
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          this.x -= (dx / dist) * force * 1.2;
+          this.y -= (dy / dist) * force * 1.2;
+        }
+      }
+    }
+
+    draw(theme) {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = theme === 'dark' ? '#00ff88' : '#059669';
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    const lineColor = theme === 'dark' ? 'rgba(0, 255, 136, ' : 'rgba(5, 150, 105, ';
+
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw(theme);
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < maxDistance) {
+          const alpha = (1 - dist / maxDistance) * (theme === 'dark' ? 0.2 : 0.1);
+          ctx.strokeStyle = `${lineColor}${alpha})`;
+          ctx.lineWidth = 0.75;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    animationFrameId = requestAnimationFrame(animate);
+  }
+
+  // Respect prefers-reduced-motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    animate();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animationFrameId);
+    } else if (!prefersReduced) {
+      animate();
+    }
   });
 }
 

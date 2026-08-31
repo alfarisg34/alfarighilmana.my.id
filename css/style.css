@@ -1,101 +1,113 @@
 /* 
  * Design System & Master Styling for Alfari Sidnan Ghilmana Portfolio
- * Style: Clean Editorial Tech (Stripe / Vercel Light Aesthetic with Dark Mode Toggle)
+ * Style: Obsidian Cyber-Canvas & Matrix Compute (Visual Computing & Systems Architecture)
  * Domain: alfarighilmana.my.id
  */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  /* Color Scheme - Default: Clean Editorial Tech Light */
-  --bg-main: #f8fafc;
+  /* Color Scheme - Default: Phosphor Blueprint Light */
+  --bg-main: #f0fdf4;
   --bg-surface: #ffffff;
   --bg-surface-elevated: #ffffff;
   --bg-card: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.85);
-  --bg-card-subtle: #f1f5f9;
-  --bg-code: #0b1120;
+  --bg-glass: rgba(255, 255, 255, 0.92);
+  --bg-card-subtle: #ecfdf5;
+  --bg-code: #03060a;
   
-  --border-subtle: #e2e8f0;
-  --border-hover: #94a3b8;
-  --border-glow: rgba(37, 99, 235, 0.25);
+  --border-subtle: #d1fae5;
+  --border-hover: #10b981;
+  --border-active: #00ff88;
+  --border-glow: rgba(16, 185, 129, 0.25);
   
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
+  --text-primary: #064e3b;
+  --text-secondary: #334155;
   --text-muted: #64748b;
-  --text-highlight: #020617;
+  --text-highlight: #022c22;
   
-  /* Brand Accents */
-  --primary-cyan: #0284c7;
-  --primary-indigo: #4f46e5;
+  /* Phosphor Brand Accents */
   --primary-emerald: #059669;
+  --primary-emerald-bright: #10b981;
+  --primary-cyan: #0284c7;
   --primary-amber: #d97706;
+  --primary-indigo: #4f46e5;
   --primary-rose: #e11d48;
 
   /* Gradients */
-  --grad-brand: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #0d9488 100%);
-  --grad-cyan-indigo: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
-  --grad-emerald: linear-gradient(135deg, #059669 0%, #0891b2 100%);
+  --grad-brand: linear-gradient(135deg, #059669 0%, #0284c7 60%, #4f46e5 100%);
+  --grad-cyan-indigo: linear-gradient(135deg, #059669 0%, #0284c7 100%);
+  --grad-emerald: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --grad-amber: linear-gradient(135deg, #d97706 0%, #ea580c 100%);
   --grad-dark-card: #ffffff;
   
   /* Typography */
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  --font-heading: 'Chakra Petch', 'Outfit', -apple-system, sans-serif;
+  --font-body: 'Outfit', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  /* Shadows & Glows */
-  --glow-cyan: 0 0 20px rgba(2, 132, 199, 0.15);
-  --glow-indigo: 0 0 20px rgba(79, 70, 229, 0.15);
-  --glow-emerald: 0 0 20px rgba(5, 150, 105, 0.15);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-  --shadow-hover: 0 20px 30px -10px rgba(15, 23, 42, 0.12), 0 10px 15px -5px rgba(15, 23, 42, 0.06);
-  --shadow-modal: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  /* Type Scale Tokens (DESIGN.md Aligned) */
+  --type-display: clamp(2.4rem, 5.5vw, 4rem);
+  --type-headline: 2.5rem;
+  --type-title: 1.75rem;
+  --type-body-lg: 1.05rem;
+  --type-body: 0.98rem;
+  --type-label: 0.8rem;
 
-  /* Layout */
+  /* Shadows & Cyber Glows */
+  --glow-emerald: 0 0 24px rgba(16, 185, 129, 0.25);
+  --glow-cyan: 0 0 24px rgba(6, 182, 212, 0.25);
+  --shadow-sm: 0 1px 3px rgba(6, 78, 59, 0.05), 0 1px 2px rgba(6, 78, 59, 0.03);
+  --shadow-card: 0 4px 20px -2px rgba(6, 78, 59, 0.06), 0 2px 6px -1px rgba(6, 78, 59, 0.04);
+  --shadow-hover: 0 16px 32px -8px rgba(6, 78, 59, 0.12), 0 8px 16px -4px rgba(6, 78, 59, 0.06);
+  --shadow-modal: 0 25px 50px -12px rgba(6, 78, 59, 0.25);
+
+  /* Layout & Sharp Cyber Radii */
   --container-max: 1240px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
-  --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Dark Mode Overrides */
+/* Dark Mode Overrides — Obsidian Cyber-Canvas Compute */
 [data-theme="dark"] {
-  --bg-main: #06090f;
-  --bg-surface: #0b111e;
-  --bg-surface-elevated: #111a2e;
-  --bg-card: rgba(13, 21, 38, 0.7);
-  --bg-glass: rgba(11, 17, 30, 0.85);
-  --bg-card-subtle: rgba(255, 255, 255, 0.04);
-  --bg-code: #030712;
+  --bg-main: #05080e;
+  --bg-surface: #09101d;
+  --bg-surface-elevated: #0e182c;
+  --bg-card: rgba(9, 16, 29, 0.88);
+  --bg-glass: rgba(8, 14, 25, 0.9);
+  --bg-card-subtle: rgba(16, 185, 129, 0.04);
+  --bg-code: #03060a;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(56, 189, 248, 0.35);
-  --border-glow: rgba(129, 140, 248, 0.4);
+  --border-subtle: rgba(16, 185, 129, 0.16);
+  --border-hover: rgba(16, 185, 129, 0.45);
+  --border-active: #00ff88;
+  --border-glow: rgba(0, 255, 136, 0.4);
 
-  --text-primary: #f8fafc;
+  --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --text-highlight: #ffffff;
 
-  --primary-cyan: #38bdf8;
-  --primary-indigo: #818cf8;
   --primary-emerald: #10b981;
+  --primary-emerald-bright: #00ff88;
+  --primary-cyan: #06b6d4;
   --primary-amber: #f59e0b;
+  --primary-indigo: #6366f1;
   --primary-rose: #f43f5e;
 
-  --grad-brand: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #10b981 100%);
-  --grad-cyan-indigo: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
-  --grad-emerald: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  --grad-brand: linear-gradient(135deg, #00ff88 0%, #06b6d4 55%, #6366f1 100%);
+  --grad-cyan-indigo: linear-gradient(135deg, #00ff88 0%, #06b6d4 100%);
+  --grad-emerald: linear-gradient(135deg, #00ff88 0%, #059669 100%);
   --grad-amber: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-  --grad-dark-card: linear-gradient(180deg, rgba(17, 26, 46, 0.85) 0%, rgba(10, 16, 28, 0.95) 100%);
+  --grad-dark-card: linear-gradient(180deg, rgba(14, 24, 44, 0.9) 0%, rgba(7, 12, 22, 0.95) 100%);
 
-  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.2);
-  --shadow-modal: 0 25px 60px -15px rgba(0, 0, 0, 0.8);
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.65);
+  --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.85), 0 0 24px rgba(0, 255, 136, 0.2);
+  --shadow-modal: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
 }
 
 /* Reset & Base */
@@ -177,7 +189,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Ambient Subtle Backdrop */
+/* Ambient Subtle Backdrop & Interactive Canvas */
 .ambient-background {
   position: fixed;
   top: 0;
@@ -189,13 +201,27 @@ body {
   overflow: hidden;
 }
 
+.matrix-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.45;
+  z-index: 0;
+}
+
+[data-theme="light"] .matrix-canvas {
+  opacity: 0.22;
+}
+
 .ambient-glow-1 {
   position: absolute;
   top: -10%;
   left: 20%;
   width: 550px;
   height: 550px;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0) 70%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0) 70%);
   border-radius: 50%;
   filter: blur(60px);
   animation: floatAmbient 20s ease-in-out infinite alternate;
@@ -207,7 +233,7 @@ body {
   right: -5%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(79, 70, 229, 0.07) 0%, rgba(79, 70, 229, 0) 70%);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.07) 0%, rgba(6, 182, 212, 0) 70%);
   border-radius: 50%;
   filter: blur(70px);
   animation: floatAmbient 24s ease-in-out infinite alternate-reverse;
@@ -219,30 +245,30 @@ body {
   left: 5%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(5, 150, 105, 0.06) 0%, rgba(5, 150, 105, 0) 70%);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0) 70%);
   border-radius: 50%;
   filter: blur(60px);
   animation: floatAmbient 22s ease-in-out infinite alternate;
 }
 
-[data-theme="dark"] .ambient-glow-1 { background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(56, 189, 248, 0) 70%); }
-[data-theme="dark"] .ambient-glow-2 { background: radial-gradient(circle, rgba(129, 140, 248, 0.12) 0%, rgba(129, 140, 248, 0) 70%); }
-[data-theme="dark"] .ambient-glow-3 { background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0) 70%); }
+[data-theme="dark"] .ambient-glow-1 { background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, rgba(0, 255, 136, 0) 70%); }
+[data-theme="dark"] .ambient-glow-2 { background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0) 70%); }
+[data-theme="dark"] .ambient-glow-3 { background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0) 70%); }
 
 .grid-overlay {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(to right, rgba(11, 19, 36, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 19, 36, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
   mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 90%);
 }
 
 [data-theme="dark"] .grid-overlay {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
 }
 
 @keyframes floatAmbient {
@@ -259,13 +285,14 @@ body {
   padding: 0 1.5rem;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 /* Typography Utilities */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  line-height: 1.25;
+  font-weight: 800;
+  line-height: 1.15;
   color: var(--text-highlight);
 }
 
@@ -274,7 +301,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
+  display: inline;
 }
 
 .cyan-text {
@@ -287,6 +314,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .mono {
   font-family: var(--font-mono);
+}
+
+.text-highlight {
+  color: var(--text-highlight);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.mb-lg {
+  margin-bottom: 2rem;
+}
+
+.section-tag-center {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
 }
 
 p {
@@ -307,7 +352,7 @@ a {
 
 .section-header {
   text-align: center;
-  max-width: 740px;
+  max-width: 760px;
   margin: 0 auto 3.5rem;
 }
 
@@ -315,33 +360,35 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.95rem;
-  background: rgba(2, 132, 199, 0.08);
-  border: 1px solid rgba(2, 132, 199, 0.2);
-  border-radius: var(--radius-full);
+  padding: 0.35rem 0.85rem;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--primary-cyan);
   margin-bottom: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 
 [data-theme="dark"] .section-tag {
-  background: rgba(56, 189, 248, 0.1);
-  border-color: rgba(56, 189, 248, 0.25);
+  background: rgba(0, 240, 255, 0.06);
+  border-color: rgba(0, 240, 255, 0.2);
   color: var(--primary-cyan);
 }
 
 .section-title {
-  font-size: 2.6rem;
+  font-family: var(--font-heading);
+  font-size: var(--type-headline);
+  font-weight: 800;
   margin-bottom: 1rem;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 
 .section-desc {
-  font-size: 1.08rem;
+  font-size: var(--type-body-lg);
   color: var(--text-secondary);
   line-height: 1.7;
 }
