@@ -1,20 +1,19 @@
 /**
  * Main Application Logic for Alfari Sidnan Ghilmana Portfolio
+ * Aesthetic: Industrial Telemetry & Editorial Precision (Anti-Template UI)
  * Domain: alfarighilmana.my.id
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const data = window.PORTFOLIO_DATA;
-  const icons = window.ICONS;
-
   initThemeToggle();
   initNavigation();
-  renderHeroStats();
+  renderHeroTelemetry();
+  renderHeroMetrics();
+  renderProjectsFilterBar();
+  renderProjects('all');
   renderTimeline();
   renderSkills();
   renderCertifications();
-  renderProjects('all');
-  initProjectFilters();
   initModal();
   initScrollSpy();
   initScrollReveal();
@@ -26,13 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle-btn');
-  const savedTheme = localStorage.getItem('theme') || 'light';
+  const savedTheme = localStorage.getItem('theme') || 'dark';
   
   applyTheme(savedTheme);
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       applyTheme(newTheme);
       localStorage.setItem('theme', newTheme);
@@ -112,156 +111,79 @@ function initNavigation() {
 }
 
 /* ==========================================================================
-   2. HERO STATS
+   2. HERO TELEMETRY CONSOLE & METRICS
    ========================================================================== */
-function renderHeroStats() {
-  const container = document.getElementById('hero-stats-container');
-  if (!container || !window.PORTFOLIO_DATA) return;
+function renderHeroTelemetry() {
+  const container = document.getElementById('telemetry-nodes-list');
+  const data = window.PORTFOLIO_DATA;
+  if (!container || !data || !data.profile.telemetryNodes) return;
 
-  const stats = window.PORTFOLIO_DATA.profile.metrics;
-  container.innerHTML = stats.map(s => `
-    <div class="stat-item">
-      <div class="stat-value">${s.value}</div>
-      <div class="stat-label">${s.label}</div>
-      <div class="stat-sub">${s.sub}</div>
+  container.innerHTML = data.profile.telemetryNodes.map(node => `
+    <div class="telemetry-node-row">
+      <div class="node-left">
+        <span class="node-led"></span>
+        <div>
+          <div class="node-name">${node.label}</div>
+          <div class="node-role">${node.role}</div>
+        </div>
+      </div>
+      <div class="node-metrics">
+        <span class="node-badge">${node.env}</span>
+        <span style="color: var(--primary-cyan); font-weight: 700;">${node.latency}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderHeroMetrics() {
+  const container = document.getElementById('hero-metrics-container');
+  const data = window.PORTFOLIO_DATA;
+  if (!container || !data || !data.profile.metrics) return;
+
+  container.innerHTML = data.profile.metrics.map(m => `
+    <div class="metric-cell">
+      <div class="metric-val">${m.value}</div>
+      <div class="metric-lbl">${m.label}</div>
+      <div class="metric-sub">${m.sub}</div>
     </div>
   `).join('');
 }
 
 /* ==========================================================================
-   3. TIMELINE (EXPERIENCE & EDUCATION)
+   3. FEATURED PROJECTS SHOWCASE & FILTER BAR
    ========================================================================== */
-function renderTimeline() {
-  const expContainer = document.getElementById('experience-timeline');
-  const eduContainer = document.getElementById('education-timeline');
+function renderProjectsFilterBar() {
+  const container = document.getElementById('projects-filter-bar');
   const data = window.PORTFOLIO_DATA;
+  if (!container || !data || !data.projects) return;
 
-  if (expContainer && data.experience) {
-    expContainer.innerHTML = data.experience.map(item => `
-      <div class="timeline-item">
-        <div class="timeline-period">${item.period}</div>
-        <div class="timeline-role">${item.role}</div>
-        <div class="timeline-org">${item.company} ${item.department ? `· ${item.department}` : ''}</div>
-        <p class="timeline-desc">${item.description}</p>
-        <ul class="timeline-bullets">
-          ${item.highlights.map(h => `<li>${h}</li>`).join('')}
-        </ul>
-      </div>
-    `).join('');
-  }
-
-  if (eduContainer && data.education) {
-    eduContainer.innerHTML = data.education.map(item => `
-      <div class="timeline-item">
-        <div class="timeline-period">${item.period}</div>
-        <div class="timeline-role">${item.degree}</div>
-        <div class="timeline-org">${item.institution}</div>
-        <p class="timeline-desc">${item.description}</p>
-      </div>
-    `).join('');
-  }
-}
-
-/* ==========================================================================
-   4. SKILLS MATRIX
-   ========================================================================== */
-function renderSkills() {
-  const container = document.getElementById('skills-container');
-  const data = window.PORTFOLIO_DATA.skills;
-  const icons = window.ICONS;
-
-  if (!container || !data) return;
-
+  const projects = data.projects;
   const categories = [
-    { key: 'frontend', title: 'Frontend Engineering', icon: 'zap' },
-    { key: 'backend', title: 'Backend & Processing', icon: 'server' },
-    { key: 'databaseCloud', title: 'Database & Cloud', icon: 'database' },
-    { key: 'testingQA', title: 'QA & Test Automation', icon: 'shield' }
+    { key: 'all', label: '[00] ALL', count: projects.length },
+    { key: 'enterprise', label: '[01] ENTERPRISE', count: projects.filter(p => p.category === 'enterprise').length },
+    { key: 'automation', label: '[02] AI & OCR', count: projects.filter(p => p.category === 'automation').length },
+    { key: 'interactive', label: '[03] CANVAS', count: projects.filter(p => p.category === 'interactive').length },
+    { key: 'fullstack', label: '[04] FULLSTACK', count: projects.filter(p => p.category === 'fullstack').length },
+    { key: 'qa', label: '[05] SDET QA', count: projects.filter(p => p.category === 'qa').length }
   ];
 
-  container.innerHTML = categories.map(cat => {
-    const skillList = data[cat.key] || [];
-    return `
-      <div class="skill-category-card">
-        <div class="skill-card-head">
-          <div class="skill-icon-wrap">${icons[cat.icon] || ''}</div>
-          <h3>${cat.title}</h3>
-        </div>
-        <div class="skill-items-list">
-          ${skillList.map(s => `
-            <div class="skill-bar-row">
-              <div class="skill-info">
-                <span>${s.name}</span>
-                <span class="skill-percent">${s.level}%</span>
-              </div>
-              <div class="skill-progress-track">
-                <div class="skill-progress-fill" style="width: ${s.level}%"></div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-/* ==========================================================================
-   4.5 LICENSES & CERTIFICATIONS
-   ========================================================================== */
-function renderCertifications() {
-  const container = document.getElementById('certifications-container');
-  const data = window.PORTFOLIO_DATA;
-  const icons = window.ICONS;
-
-  if (!container || !data || !data.certifications) return;
-
-  container.innerHTML = data.certifications.map(cert => `
-    <div class="cert-card reveal">
-      <div>
-        <div class="cert-card-top">
-          <div>
-            <span class="cert-badge-pill">
-              ${icons[cert.icon] || icons.award}
-              <span>${cert.badge}</span>
-            </span>
-            <h3 class="cert-card-title" style="margin-top: 0.75rem;">${cert.title}</h3>
-          </div>
-          <div class="cert-icon-box">
-            ${icons[cert.icon] || icons.award}
-          </div>
-        </div>
-
-        <div class="cert-issuer-row">
-          <span class="cert-issuer-name">${cert.issuer}</span>
-          <span>·</span>
-          <span class="cert-issue-date">${cert.issueDate}</span>
-          ${cert.credentialId ? `<span class="cert-issue-date cert-id-pill">ID: ${cert.credentialId}</span>` : ''}
-        </div>
-
-        <div class="cert-skills-wrap">
-          ${cert.skills.map(s => `<span class="cert-skill-pill">${s}</span>`).join('')}
-        </div>
-      </div>
-
-      <div class="cert-card-footer">
-        <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--primary-emerald); font-weight: 600;">
-          ${icons.check}
-          <span>Verified Credential</span>
-        </div>
-        ${cert.credentialUrl ? `
-          <a href="${cert.credentialUrl}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="padding: 0.35rem 0.85rem; font-size: 0.8rem;">
-            <span>Verify</span>
-            ${icons.external}
-          </a>
-        ` : ''}
-      </div>
-    </div>
+  container.innerHTML = categories.map((cat, idx) => `
+    <button class="filter-btn ${idx === 0 ? 'active' : ''}" data-category="${cat.key}">
+      <span>${cat.label}</span>
+      <span class="filter-count">(${cat.count})</span>
+    </button>
   `).join('');
+
+  container.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.getAttribute('data-category');
+      renderProjects(cat);
+    });
+  });
 }
 
-/* ==========================================================================
-   5. FEATURED PROJECTS & CASE STUDIES
-   ========================================================================== */
 function renderProjects(categoryFilter = 'all') {
   const container = document.getElementById('projects-container');
   const data = window.PORTFOLIO_DATA.projects;
@@ -277,8 +199,8 @@ function renderProjects(categoryFilter = 'all') {
     <article class="project-card reveal" data-project-id="${project.id}">
       <div class="project-card-body">
         <div class="project-card-header">
-          <div class="project-category-tag">
-            <span>${project.categoryName}</span>
+          <div class="project-category-row">
+            <span class="project-category-tag">${project.categoryName}</span>
             <span class="badge badge-cyan">${project.badge}</span>
           </div>
           <h3 class="project-title">${project.title}</h3>
@@ -301,19 +223,19 @@ function renderProjects(categoryFilter = 'all') {
 
         <div class="project-card-footer">
           <button class="btn btn-primary btn-sm view-case-study-btn" data-id="${project.id}">
-            <span>Deep Dive Case Study</span>
+            <span>Inspect Blueprint</span>
             ${icons.arrowRight}
           </button>
           ${project.github ? `
             <a href="${project.github}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
               ${icons.github}
-              <span>Source Code</span>
+              <span>Source</span>
             </a>
           ` : ''}
           ${project.isPrivate ? `
-            <span class="badge badge-amber" style="padding: 0.45rem 0.85rem; font-size: 0.8rem;">
+            <span class="badge badge-amber" style="padding: 0.35rem 0.65rem;">
               ${icons.shield}
-              <span>Private Enterprise Repo</span>
+              <span>Confidential Enterprise</span>
             </span>
           ` : ''}
           ${project.demoUrl ? `
@@ -339,7 +261,7 @@ function renderProjects(categoryFilter = 'all') {
     </article>
   `).join('');
 
-  // Rebind case study buttons
+  // Re-bind case study buttons
   document.querySelectorAll('.view-case-study-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const id = e.currentTarget.getAttribute('data-id');
@@ -350,20 +272,8 @@ function renderProjects(categoryFilter = 'all') {
   initScrollReveal();
 }
 
-function initProjectFilters() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const cat = btn.getAttribute('data-category');
-      renderProjects(cat);
-    });
-  });
-}
-
 /* ==========================================================================
-   6. CASE STUDY MODAL SYSTEM (ACCESSIBLE WITH FOCUS TRAP)
+   4. CASE STUDY MODAL SYSTEM (ACCESSIBLE WITH FOCUS TRAP)
    ========================================================================== */
 let previouslyFocusedElement = null;
 
@@ -443,19 +353,19 @@ function openCaseStudyModal(projectId) {
   const tabOverview = document.getElementById('tab-overview');
   tabOverview.innerHTML = `
     <div class="modal-section-block">
-      <h4 class="modal-heading-cyan">Project Summary & Business Value</h4>
+      <h4 class="modal-heading-cyan">[ SUMMARY & SYSTEM PURPOSE ]</h4>
       <p class="modal-text">${project.overview}</p>
     </div>
     
     <div class="modal-section-block">
-      <h4 class="modal-heading-indigo">Core Engineering Highlights</h4>
+      <h4 class="modal-heading-indigo">[ CORE ENGINEERING HIGHLIGHTS ]</h4>
       <ul class="timeline-bullets">
         ${project.highlights.map(h => `<li class="modal-text">${h}</li>`).join('')}
       </ul>
     </div>
 
     <div>
-      <h4 class="modal-heading-emerald">Technology Stack</h4>
+      <h4 class="modal-heading-emerald">[ TECHNOLOGY STACK ]</h4>
       <div class="project-tech-tags">
         ${project.techStack.map(t => `<span class="tech-tag">${t}</span>`).join('')}
       </div>
@@ -466,11 +376,11 @@ function openCaseStudyModal(projectId) {
   const tabArch = document.getElementById('tab-architecture');
   tabArch.innerHTML = `
     <div class="modal-section-block">
-      <h4 class="modal-heading-cyan">System Architecture & Execution Pipeline</h4>
-      <p class="modal-text">End-to-end data flow and computational stages designed for high reliability and zero runtime data corruption.</p>
+      <h4 class="modal-heading-cyan">[ EXECUTION PIPELINE & DATA FLOW ]</h4>
+      <p class="modal-text">Deterministic end-to-end data pipeline designed for high reliability, multi-tenant isolation, and zero runtime state corruption.</p>
     </div>
-    <div class="project-visual-preview modal-preview-box">
-      <pre class="ascii-architecture" style="color: #38bdf8; font-size: 0.85rem; line-height: 1.55;">${project.architecture}</pre>
+    <div class="project-visual-preview" style="margin-top: 1rem; border-color: var(--border-chassis);">
+      <pre class="ascii-architecture" style="color: #38bdf8; font-size: 0.8rem; line-height: 1.5;">${project.architecture}</pre>
     </div>
   `;
 
@@ -478,28 +388,28 @@ function openCaseStudyModal(projectId) {
   const tabMetrics = document.getElementById('tab-metrics');
   tabMetrics.innerHTML = `
     <div class="modal-section-block">
-      <h4 class="modal-heading-emerald">Key Performance Benchmarks</h4>
-      <p class="modal-text">Measured performance metrics, algorithmic complexity, and system throughput.</p>
+      <h4 class="modal-heading-emerald">[ BENCHMARKS & PERFORMANCE PROFILES ]</h4>
+      <p class="modal-text">Observed production benchmarks, algorithmic complexities, and computational tolerances.</p>
     </div>
-    <div class="hero-stats-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 2rem;">
+    <div class="hero-metrics-strip" style="grid-template-columns: repeat(2, 1fr); margin-top: 0; margin-bottom: 2rem;">
       ${project.stats.map(s => `
-        <div class="stat-item" style="padding: 1rem;">
-          <div class="stat-value" style="font-size: 2rem;">${s.value}</div>
-          <div class="stat-label">${s.label}</div>
+        <div class="metric-cell">
+          <div class="metric-val" style="font-size: 1.75rem;">${s.value}</div>
+          <div class="metric-lbl">${s.label}</div>
         </div>
       `).join('')}
     </div>
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
       ${project.github ? `
         <a href="${project.github}" target="_blank" rel="noopener" class="btn btn-primary">
           ${window.ICONS.github}
-          <span>Explore GitHub Repository</span>
+          <span>GitHub Repository</span>
         </a>
       ` : ''}
       ${project.isPrivate ? `
-        <div class="badge badge-amber" style="padding: 0.6rem 1rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+        <div class="badge badge-amber" style="padding: 0.5rem 0.85rem; font-size: 0.8rem;">
           ${window.ICONS.shield}
-          <span>Enterprise Confidential / Private QA Framework</span>
+          <span>Enterprise Confidential / Private Codebase</span>
         </div>
       ` : ''}
       ${project.demoUrl ? `
@@ -539,7 +449,135 @@ function closeModal() {
 }
 
 /* ==========================================================================
-   7. UTILITIES (CLIPBOARD & TOAST)
+   5. TIMELINE (EXPERIENCE & EDUCATION)
+   ========================================================================== */
+function renderTimeline() {
+  const expContainer = document.getElementById('experience-timeline');
+  const eduContainer = document.getElementById('education-timeline');
+  const data = window.PORTFOLIO_DATA;
+
+  if (expContainer && data.experience) {
+    expContainer.innerHTML = data.experience.map(item => `
+      <div class="timeline-item">
+        <div class="timeline-period">${item.period}</div>
+        <div class="timeline-role">${item.role}</div>
+        <div class="timeline-org">${item.company} ${item.department ? `· ${item.department}` : ''}</div>
+        <p class="timeline-desc">${item.description}</p>
+        <ul class="timeline-bullets">
+          ${item.highlights.map(h => `<li>${h}</li>`).join('')}
+        </ul>
+      </div>
+    `).join('');
+  }
+
+  if (eduContainer && data.education) {
+    eduContainer.innerHTML = data.education.map(item => `
+      <div class="timeline-item">
+        <div class="timeline-period">${item.period}</div>
+        <div class="timeline-role">${item.degree}</div>
+        <div class="timeline-org">${item.institution}</div>
+        <p class="timeline-desc">${item.description}</p>
+      </div>
+    `).join('');
+  }
+}
+
+/* ==========================================================================
+   6. SKILLS MATRIX
+   ========================================================================== */
+function renderSkills() {
+  const container = document.getElementById('skills-container');
+  const data = window.PORTFOLIO_DATA.skills;
+  const icons = window.ICONS;
+
+  if (!container || !data) return;
+
+  const categories = [
+    { key: 'frontend', title: 'Frontend & Visual Computing', icon: 'zap' },
+    { key: 'backend', title: 'Backend & Spreadsheet Processing', icon: 'server' },
+    { key: 'databaseCloud', title: 'Cloud & Database Architecture', icon: 'database' },
+    { key: 'testingQA', title: 'QA & Test Automation Engineering', icon: 'shield' }
+  ];
+
+  container.innerHTML = categories.map(cat => {
+    const skillList = data[cat.key] || [];
+    return `
+      <div class="skill-category-card">
+        <div class="ledger-head" style="margin-bottom: 1.25rem; padding-bottom: 0.75rem;">
+          <div class="ledger-icon-box">${icons[cat.icon] || ''}</div>
+          <h3>${cat.title}</h3>
+        </div>
+        <div class="skill-items-list">
+          ${skillList.map(s => `
+            <div class="skill-bar-row">
+              <div class="skill-info">
+                <span>${s.name}</span>
+                <span class="skill-percent">${s.level}%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-fill" style="width: ${s.level}%"></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ==========================================================================
+   7. LICENSES & CERTIFICATIONS
+   ========================================================================== */
+function renderCertifications() {
+  const container = document.getElementById('certifications-container');
+  const data = window.PORTFOLIO_DATA;
+  const icons = window.ICONS;
+
+  if (!container || !data || !data.certifications) return;
+
+  container.innerHTML = data.certifications.map(cert => `
+    <div class="cert-card reveal">
+      <div>
+        <div class="cert-card-top">
+          <div>
+            <span class="cert-badge-pill">
+              ${icons[cert.icon] || icons.award}
+              <span>${cert.badge}</span>
+            </span>
+            <h3 class="cert-card-title">${cert.title}</h3>
+          </div>
+        </div>
+
+        <div class="cert-issuer-row">
+          <span class="cert-issuer-name">${cert.issuer}</span>
+          <span>·</span>
+          <span class="mono">${cert.issueDate}</span>
+          ${cert.credentialId ? `<span class="cert-id-pill">ID: ${cert.credentialId}</span>` : ''}
+        </div>
+
+        <div class="cert-skills-wrap">
+          ${cert.skills.map(s => `<span class="cert-skill-pill">${s}</span>`).join('')}
+        </div>
+      </div>
+
+      <div class="cert-card-footer">
+        <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--primary-emerald); font-family: var(--font-mono); font-weight: 600;">
+          ${icons.check}
+          <span>Verified Credential</span>
+        </div>
+        ${cert.credentialUrl ? `
+          <a href="${cert.credentialUrl}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="padding: 0.3rem 0.75rem;">
+            <span>Verify</span>
+            ${icons.external}
+          </a>
+        ` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ==========================================================================
+   8. UTILITIES (CLIPBOARD & TOAST)
    ========================================================================== */
 window.copyToClipboard = function(text, successMsg = 'Copied to clipboard!') {
   navigator.clipboard.writeText(text).then(() => {
@@ -584,7 +622,7 @@ function initScrollSpy() {
     if (!ticking) {
       window.requestAnimationFrame(() => {
         let current = '';
-        const scrollPos = window.scrollY + 200;
+        const scrollPos = window.scrollY + 220;
 
         sections.forEach(section => {
           const top = section.offsetTop;
@@ -615,7 +653,7 @@ function initScrollReveal() {
         entry.target.classList.add('active');
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
 
   reveals.forEach(el => observer.observe(el));
 }
@@ -627,32 +665,19 @@ function initBackToTop() {
   const btn = document.getElementById('back-to-top-btn');
   if (!btn) return;
 
-  // Render flying arrow SVG if empty
-  if (!btn.innerHTML.trim() && window.ICONS && window.ICONS.arrowFlying) {
-    btn.innerHTML = window.ICONS.arrowFlying;
-  }
-
-  // Scroll threshold listener
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 320) {
+    if (window.scrollY > 350) {
       btn.classList.add('visible');
     } else {
       btn.classList.remove('visible');
     }
   }, { passive: true });
 
-  // Click handler with launch animation and smooth scroll
   btn.addEventListener('click', () => {
     btn.classList.add('launching');
-    
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
       btn.classList.remove('launching');
     }, 600);
   });
 }
-

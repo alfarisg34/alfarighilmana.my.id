@@ -1,13 +1,14 @@
 // Master Portfolio Data for Alfari Sidnan Ghilmana (alfarighilmana.my.id)
+// Visual Archetype: Industrial Telemetry & Editorial Precision
 window.PORTFOLIO_DATA = {
   profile: {
     name: "Alfari Sidnan Ghilmana",
     shortName: "Alfari",
     headline: "Full Stack Software Engineer & Systems Architect",
-    tagline: "Specializing in High-Performance Enterprise Automation, Interactive Visual Computing, and Financial Intelligence Systems.",
-    bio: "Informatics graduate from Universitas Padjadjaran (UNPAD) with a strong foundation in Web GIS, Agile software engineering, and fullstack cloud architectures. Experienced in building mission-critical public sector budget automation engines at Kemnaker RI, high-framerate interactive canvas platforms, and enterprise-grade financial dashboards.",
-    status: "Available for High-Impact Software Engineering & Architecture Roles",
-    location: "Indonesia",
+    tagline: "Specializing in High-Performance Enterprise Automation, Multimodal AI OCR Pipelines, Interactive Visual Computing, and Production SDET Standards.",
+    bio: "Informatics graduate from Universitas Padjadjaran (UNPAD) crafting resilient public sector budget engines at Kemnaker RI, serverless multimodal OCR pipelines, 60 FPS interactive canvas visualizers, and financial intelligence operating systems.",
+    status: "Available for Specialized Systems Engineering & Architecture Roles",
+    location: "Jakarta & Bandung, Indonesia",
     domain: "alfarighilmana.my.id",
     socials: {
       github: "https://github.com/alfarisg34",
@@ -19,10 +20,17 @@ window.PORTFOLIO_DATA = {
       website: "https://alfarighilmana.my.id"
     },
     metrics: [
-      { label: "Computational Accuracy", value: "100%", sub: "Hierarchical Budget Formulas" },
-      { label: "Client Media Compression", value: ">90%", sub: "60 FPS Interactive Canvas" },
-      { label: "Data Transformation Speed", value: "<1.2s", sub: "Multi-Sheet 41-Col Matrices" },
-      { label: "System Uptime & Stability", value: "99.9%", sub: "Cloud & Supabase Architecture" }
+      { label: "Formula Accuracy", value: "100%", sub: "Hierarchical 41-Col Matrix" },
+      { label: "OCR Cold Start", value: "<300ms", sub: "Serverless Multimodal Vision" },
+      { label: "Canvas Frame Rate", value: "60 FPS", sub: "Dynamic LOD & Client Compression" },
+      { label: "Clerical Time Saved", value: "95%+", sub: "Satker Budget Automation" }
+    ],
+    telemetryNodes: [
+      { id: "NODE_EXCEL_V3", label: "Excel Processor V3", status: "ACTIVE", latency: "1.2s", env: "PROD", role: "Budget Matrix Engine" },
+      { id: "NODE_EASYCAL", label: "EasyCal Calendar AI", status: "ACTIVE", latency: "1.8s", env: "SERVERLESS", role: "Multimodal BYOK Studio" },
+      { id: "NODE_OCR_SERVICE", label: "Gemini Flash OCR API", status: "ACTIVE", latency: "280ms", env: "VERCEL EDGE", role: "Public Vision OCR" },
+      { id: "NODE_FAMILYTREE", label: "Family Tree Canvas", status: "ACTIVE", latency: "60 FPS", env: "CLIENT/SUPABASE", role: "Visual Computing LOD" },
+      { id: "NODE_WEALTH_OS", label: "Financial Dashboard OS", status: "ACTIVE", latency: "99.9%", env: "NEXT.JS 16 / SSR", role: "Multi-Wallet Ledger" }
     ]
   },
 
@@ -31,15 +39,15 @@ window.PORTFOLIO_DATA = {
       institution: "Universitas Padjadjaran (UNPAD)",
       degree: "Bachelor of Computer Science / S1 Teknik Informatika",
       period: "Graduated Jan 2023",
-      description: "Focused on Software Engineering, Web Geographic Information Systems (GIS), and Agile Methodologies. Authored research thesis on Web-based GIS for Traditional Arts Mapping in Indonesia.",
+      description: "Focused on Software Engineering, Web Geographic Information Systems (GIS), and Agile Methodologies. Authored research thesis on Web-based GIS for Traditional Arts Spatial Mapping in Indonesia.",
       badge: "Informatics (UNPAD)",
       icon: "graduation"
     },
     {
       institution: "SMAN 1 Bekasi",
-      degree: "High School Diploma - Science",
+      degree: "High School Diploma - Natural Sciences (IPA)",
       period: "2014 - 2017",
-      description: "Elected Academic Achievement Coordinator (Sekbid 4) in OSIS SMAN 1 Bekasi, leading academic Olympiads and scientific extracurricular programs.",
+      description: "Elected Academic Achievement Coordinator (Sekbid 4) in OSIS SMAN 1 Bekasi, orchestrating academic Olympiads, scientific research extracurriculars, and student guidance.",
       badge: "SMAN 1 Bekasi",
       icon: "building"
     }
@@ -51,7 +59,7 @@ window.PORTFOLIO_DATA = {
       company: "Kementerian Ketenagakerjaan Republik Indonesia (Kemnaker)",
       department: "Ditjen Binapenta & PKK · Direktorat Bina Perluasan Kesempatan Kerja",
       period: "May 2025 - Present",
-      description: "Leading government budget computing systems and automated workflow modernization. Engineered the Excel Processor V3 system to convert Satker budget files into standardized 20-column RAB matrices, built Laporan FA Detail (16 Segmen) reconciliation pipelines, and developed autonomous AI-powered scheduling workflows.",
+      description: "Leading government budget computing systems and automated workflow modernization. Engineered the Excel Processor V3 system to transform Satker budget files into standardized 20-column RAB matrices, built Laporan FA Detail (16 Segmen) reconciliation pipelines, and developed autonomous AI-powered scheduling workflows.",
       highlights: [
         "Architected Node.js/ExcelJS automation pipeline saving 95%+ of manual clerical auditing time.",
         "Engineered regex multiplier parser for complex volume matrices like `[24 org x 10 kl]`.",
@@ -189,41 +197,41 @@ window.PORTFOLIO_DATA = {
   skills: {
     frontend: [
       { name: "React 18/19", level: 95, icon: "zap" },
-      { name: "Next.js 16 (App Router)", level: 92, icon: "server" },
-      { name: "TypeScript 5", level: 94, icon: "code" },
+      { name: "Next.js 16 (App Router)", level: 94, icon: "server" },
+      { name: "TypeScript 5", level: 95, icon: "code" },
       { name: "HTML5 / Vanilla CSS3", level: 98, icon: "layers" },
       { name: "Tailwind CSS v4", level: 92, icon: "sparkles" },
-      { name: "Canvas 2D API / Web GIS", level: 88, icon: "globe" }
+      { name: "Canvas 2D API / Web GIS", level: 90, icon: "globe" }
     ],
     backend: [
-      { name: "Node.js & Express", level: 95, icon: "server" },
+      { name: "Node.js & Express", level: 96, icon: "server" },
+      { name: "ExcelJS & Matrix Parsers", level: 98, icon: "spreadsheet" },
+      { name: "Google Gemini 2.5 Multimodal API", level: 95, icon: "zap" },
+      { name: "n8n Workflow Automation", level: 94, icon: "activity" },
       { name: "PHP & Laravel", level: 90, icon: "code" },
-      { name: "ExcelJS & Spreadsheet Engines", level: 98, icon: "spreadsheet" },
-      { name: "n8n Workflow Automation", level: 94, icon: "zap" },
-      { name: "REST API & Webhooks", level: 94, icon: "zap" },
-      { name: "Python / Data Scripts", level: 85, icon: "code" }
+      { name: "REST API & Serverless Handlers", level: 95, icon: "server" }
     ],
     databaseCloud: [
-      { name: "Supabase & PostgreSQL", level: 92, icon: "database" },
+      { name: "Supabase & PostgreSQL", level: 93, icon: "database" },
       { name: "MySQL & MongoDB", level: 92, icon: "database" },
-      { name: "Google Cloud & AI Studio", level: 92, icon: "globe" },
+      { name: "Google Cloud & Vertex AI", level: 92, icon: "globe" },
       { name: "Row Level Security (RLS)", level: 90, icon: "shield" },
-      { name: "Vercel Cloud Deployment", level: 95, icon: "globe" },
-      { name: "Git & GitHub CI/CD", level: 94, icon: "code" }
+      { name: "Vercel Edge & Serverless", level: 95, icon: "globe" },
+      { name: "Git & GitHub CI/CD Actions", level: 94, icon: "code" }
     ],
     testingQA: [
       { name: "Playwright E2E Automation", level: 96, icon: "cpu" },
       { name: "Page Object Model (POM)", level: 95, icon: "layers" },
-      { name: "Security Testing (SQLi / XSS)", level: 90, icon: "shield" },
-      { name: "Data-Driven Stress Testing", level: 92, icon: "zap" },
-      { name: "MD5 Checksum & File Validation", level: 94, icon: "check" }
+      { name: "Security Injection Fuzzing (SQLi/XSS)", level: 92, icon: "shield" },
+      { name: "100-Batch Stress Testing Runner", level: 94, icon: "zap" },
+      { name: "MD5 Checksum & File Validation", level: 95, icon: "check" }
     ],
     architecture: [
-      { name: "Dynamic Bottom-Up SUM Algorithms", level: 96 },
-      { name: "Multimodal AI Vision & OCR Pipelines", level: 94 },
-      { name: "Computer Vision & LangGraph", level: 90 },
-      { name: "Client-Side Media Compression", level: 92 },
-      { name: "Agile SDLC & Project Management", level: 94 }
+      { name: "Dynamic Bottom-Up SUM Algorithms", level: 98 },
+      { name: "Multimodal AI Vision & OCR Pipelines", level: 95 },
+      { name: "60 FPS Interactive Canvas LOD", level: 92 },
+      { name: "Bring Your Own Key (BYOK) Architecture", level: 96 },
+      { name: "Agile SDLC & Verification Rigor", level: 94 }
     ]
   },
 
@@ -245,7 +253,7 @@ window.PORTFOLIO_DATA = {
         { label: "Time Saved", value: "95%" },
         { label: "Formula Accuracy", value: "100%" },
         { label: "Matrix Width", value: "41 Cols" },
-        { label: "Execution Time", value: "<1.5s" }
+        { label: "Execution Time", value: "<1.2s" }
       ],
       highlights: [
         "**20-Column RAB Side-by-Side Matrix**: Seamlessly maps SEMULA (Cols 1-20), MENJADI (Cols 21-40), and dynamic SELISIH (`=AM{r}-S{r}`) at Col 41.",
@@ -271,6 +279,89 @@ Express API Server (/api/process & /api/process-with-fa)
 Output: Sanitized, 100% Mathematically Valid RAB Format Baru (.xlsx)`
     },
     {
+      id: "easycal-calendar",
+      title: "EasyCal // Serverless OCR & Gemini Calendar Studio",
+      subtitle: "Multi-Format Multimodal Extraction for Dinas Documents, Posters & WhatsApp to 1-Click Google Calendar",
+      category: "automation",
+      categoryName: "AI & Workflow Automation",
+      featured: true,
+      badge: "Serverless & BYOK",
+      tagline: "Serverless multimodal document intelligence studio parsing official government invitations (PDF), event flyers (JPG/PNG), and chat broadcasts into instant 1-Click Google Calendar events & .ICS files.",
+      overview: "A production-ready serverless Multimodal AI & OCR platform built with Next.js 16 and Google Gemini 2.5 Flash, engineered to eliminate manual calendar data entry for Indonesian civil servants and professionals. Directly integrated with custom OCR services (`https://ocr.alfarighilmana.my.id/`) and Gemini Flash AI under a privacy-first Bring Your Own Key (BYOK) architecture. Features an automated Telegram Bot Webhook (`/api/telegram/webhook`) where users can forward invitation PDFs or posters and instantly receive inline 1-click Google Calendar creation buttons and RFC-5545 `.ics` downloads.",
+      techStack: ["Next.js 16 (App Router)", "TypeScript", "Google Gemini 2.5 Flash", "Telegram Bot API", "Vercel Serverless", "BYOK Architecture", "Tailwind CSS v4", "RFC-5545 .ICS Engine"],
+      github: "https://github.com/alfarisg34/easygooglecalendar",
+      demoUrl: "https://easycal.alfarighilmana.my.id",
+      stats: [
+        { label: "Extraction Time", value: "<1.8s" },
+        { label: "Cold Start", value: "<300ms" },
+        { label: "Privacy Architecture", value: "100% BYOK" },
+        { label: "Supported Types", value: "PDF/IMG/Chat" }
+      ],
+      highlights: [
+        "**Multi-Format Document Understanding**: Accurately parses official government invitation letters (Surat Undangan Dinas Kemnaker), event flyers, and chat broadcasts.",
+        "**1-Click Google Calendar & .ICS Generation**: Pre-fills event titles, WIB/UTC+7 start/end timestamps, Zoom Meeting ID & Passcode credentials, speaker listings, and rundown details into ready-to-save URLs.",
+        "**Serverless Telegram Bot Webhook**: Built-in `/api/telegram/webhook` endpoint allowing users to connect their own Telegram bots and get instant calendar inline buttons upon forwarding PDFs or images.",
+        "**100% Privacy-First & Zero Server Database**: API Keys are held strictly in client `localStorage` with zero backend document logging or credential persistence.",
+        "**Anti-Template UI Cockpit Aesthetic**: Features high-contrast dark mode, LED status monitors, and tactile keyboard controls."
+      ],
+      architecture: `Inbound Client (Web Upload / WhatsApp Text / Telegram Bot)
+       │
+       ▼ (multipart/form-data or JSON payload)
+Next.js Edge / Serverless Route Handler (/api/extract & /api/telegram/webhook)
+       │
+       ├─ Step 01: Extract & Validate Attachment Mime-Type (PDF, JPG, PNG)
+       ├─ Step 02: BYOK Auth Validation (Header 'x-api-key' or Request Body)
+       ├─ Step 03: Dispatch High-Res Binary Stream to Gemini 2.5 Flash Vision
+       ├─ Step 04: Structured JSON Schema Extraction (Title, Start/End, Speakers, Meeting ID)
+       ├─ Step 05: Indonesian Datetime Normalizer to ISO-8601 (WIB / UTC+7) & JP Harvester
+       ├─ Step 06: Generate 1-Click Google Calendar Deep-Link URL
+       └─ Step 07: Compile RFC-5545 Standard .ICS Calendar Payload
+       │
+       ▼
+Output: 1-Click Google Calendar Event Page + Standard .ICS Download`
+    },
+    {
+      id: "ocr-service",
+      title: "Public Google Gemini Flash OCR Service",
+      subtitle: "High-Accuracy Multi-Tenant OCR REST API & Web Playground Powered by Gemini 2.5 Flash",
+      category: "automation",
+      categoryName: "AI & Workflow Automation",
+      featured: true,
+      badge: "Public REST API",
+      tagline: "Public serverless OCR engine and web playground deployed on Vercel (https://ocr.alfarighilmana.my.id). Immune to broken font encodings with <300ms cold start and <50 KB deploy footprint.",
+      overview: "A lightweight, zero-maintenance public OCR service and interactive web playground built on Google Gemini 2.5 Flash Multimodal Document Understanding with a Bring Your Own Key (BYOK) multi-tenant architecture. Specifically engineered to solve severe font encoding corruptions (`\\u0001\\u0002...`) prevalent in Indonesian official government PDFs (BSrE, Kemnaker, Srikandi). Drastically shrank deploy packages from ~15 MB (Tesseract WASM) to < 50 KB and slashed cold start latencies from 10s down to < 300 ms. Provides ready-to-integrate REST APIs for cURL, Python, Node.js, and n8n workflows.",
+      techStack: ["Node.js", "Vercel Serverless Functions", "Google Gemini 2.5 Flash", "Busboy Multipart Stream", "REST API", "Base64 Pipeline", "Public Web Playground UI"],
+      github: "https://github.com/alfarisg34/ocr-service",
+      demoUrl: "https://ocr.alfarighilmana.my.id/",
+      stats: [
+        { label: "Deploy Package", value: "<50 KB" },
+        { label: "Cold Start", value: "<300ms" },
+        { label: "Visual Accuracy", value: "100%" },
+        { label: "Multi-Tenant", value: "BYOK Auth" }
+      ],
+      highlights: [
+        "**Immunity to Font Encoding Glyph Corruption**: Uses multimodal vision understanding, completely bypassing broken embedded PDF fonts in official government documents.",
+        "**Ultra-Lightweight Serverless Footprint**: Package size reduced by >99% (<50 KB) by replacing heavy Tesseract WASM binaries with direct Google Gemini REST streaming.",
+        "**Universal Multi-Tenant API (BYOK)**: Zero database overhead; supports flexible authentication via HTTP Headers (`x-api-key`), Query Params (`?key=`), or Request Body (`apiKey`).",
+        "**Versatile Integration Ready**: Out-of-the-box examples and compatibility for cURL, Python `requests`, Node.js `fetch`, and n8n `HTTP Request` nodes.",
+        "**Interactive Web Playground**: Full dark-mode UI with drag-and-drop file upload, live OCR text viewer, one-click copy, and `.TXT` file download."
+      ],
+      architecture: `API Client Request (cURL / Python / Fetch / n8n / Web Playground)
+       │
+       ▼ (POST https://ocr.alfarighilmana.my.id/api/ocr with x-api-key)
+Vercel Serverless Function (api/ocr.js)
+       │
+       ├─ Step 01: Extract & Validate BYOK Key (Header / Query / Body)
+       ├─ Step 02: Busboy Stream Multipart / JSON Base64 Parser
+       ├─ Step 03: MIME-type Auto-Detection (PDF, JPG, PNG, WEBP, HEIC)
+       ├─ Step 04: Google AI Studio Gemini 2.5 Flash Multimodal Dispatch
+       ├─ Step 05: Document Transcription & Structural Table Recovery
+       └─ Step 06: Format JSON Response { success: true, text: "...", length: ... }
+       │
+       ▼
+Output: 200 OK Clean Plaintext OCR Response with Metadata Headers`
+    },
+    {
       id: "n8n-calendar-automation",
       title: "Telegram PDF & Bimtek Poster to Google Calendar Automation",
       subtitle: "Intelligent Event Extraction & Scheduling via Gemini 2.5 Flash Vision OCR & n8n",
@@ -278,7 +369,7 @@ Output: Sanitized, 100% Mathematically Valid RAB Format Baru (.xlsx)`
       categoryName: "AI & Workflow Automation",
       featured: true,
       badge: "Multimodal AI & n8n",
-      tagline: "Autonomous event scheduling pipeline parsing official invitation letters (PDF) and webinar flyers (JPG/PNG) via Telegram, extracting schedule metadata & JP (Jam Pelajaran) using Gemini 2.5 Flash AI Vision, and automatically syncing structured Google Calendar events.",
+      tagline: "Autonomous event scheduling pipeline parsing official invitation letters (PDF) and webinar flyers (JPG/PNG) via Telegram, extracting schedule metadata & JP using Gemini 2.5 Flash AI Vision, and auto-syncing Google Calendar.",
       overview: "An automated document intelligence and calendar synchronization system engineered using n8n, Google Gemini 2.5 Flash Multimodal Vision AI, and the Telegram Bot API. It converts manual calendar entry of official government invitations (Surat Undangan Dinas) and training flyers (Bimtek, Webinar, Workshop) into an autonomous zero-touch pipeline. When a user sends a PDF document or poster image to the Telegram bot, the system validates the payload, downloads high-resolution binaries, triggers Gemini 2.5 Flash Vision OCR with structured schema prompts, extracts event titles, dates, time boundaries (with ISO-8601 WIB normalization), Jam Pelajaran (JP) training credit hours, speaker rosters, meeting links/credentials (Zoom/GMeet/YouTube), and directly publishes structured entries into Google Calendar with automated Telegram confirmation receipts.",
       techStack: ["n8n Workflow Engine", "Google Gemini 2.5 Flash", "Multimodal Vision OCR", "Telegram Bot API", "Google Calendar API", "OAuth2", "JavaScript / Node.js"],
       github: "https://github.com/alfarisg34/n8n-workflow",
@@ -291,7 +382,7 @@ Output: Sanitized, 100% Mathematically Valid RAB Format Baru (.xlsx)`
       ],
       highlights: [
         "**Multimodal Vision OCR & Parsing**: Employs Gemini 2.5 Flash Vision to extract unstructured text, multi-speaker rosters, agenda dates, and meeting credentials directly from complex multi-page PDFs and raster poster images.",
-        "**Dynamic Temporal & Timezone Normalization**: Parses diverse Indonesian datetime formats (e.g., '12 Agustus 2026') and converts ambiguous durations (such as 's.d. selesai' default fallbacks) into strict ISO-8601 timestamps anchored to Asia/Jakarta (WIB / UTC+7).",
+        "**Dynamic Temporal & Timezone Normalization**: Parses diverse Indonesian datetime formats and converts ambiguous durations into strict ISO-8601 timestamps anchored to Asia/Jakarta (WIB / UTC+7).",
         "**Intelligent JP (Jam Pelajaran) Credit Harvester**: Automatically identifies and structures civil servant and professional training hours (e.g., `3 JP`, `32 JP`) prominently into calendar event metadata and Telegram notifications.",
         "**Multi-Channel Telegram Bot Integration**: Bidirectional webhook listener validating attachment mime-types, issuing real-time processing receipts, and returning success confirmations with direct calendar event deep-links.",
         "**Google Calendar OAuth2 Synchronization**: Automatically formats structured calendar entries with speaker listings, Zoom/GMeet meeting IDs & passcodes, registration links, and formatted event descriptions without human clerical overhead."
@@ -323,7 +414,7 @@ Step 10: Dispatch Success Confirmation & Deep-Link Receipt to Telegram Chat`
     {
       id: "family-tree",
       title: "Interactive Family Tree Map Explorer",
-      subtitle: "RPG/Map-Style Canvas Genealogy Explorer with Dynamic LOD",
+      subtitle: "RPG/Map-Style Canvas Genealogy Explorer with Dynamic Level of Detail (LOD)",
       category: "interactive",
       categoryName: "Interactive & Canvas",
       featured: true,
@@ -367,7 +458,7 @@ Supabase Cloud (PostgreSQL Database)
       featured: true,
       badge: "Fullstack OS",
       tagline: "Comprehensive personal and organizational financial dashboard featuring real-time multi-account ledgers, interactive Recharts analytics, in-line mathematical evaluator, and Supabase SSR auth.",
-      overview: "An enterprise-grade financial management platform developed with Next.js 16 (App Router), React 19, and Supabase. Enables users to manage multiple fund sources (Bank BCA, Mandiri, Cash, E-wallets), track budget allocations against actual spending with threshold alerts, execute double-entry inter-account transfers, and perform swift data entry using an integrated in-line mathematical evaluation calculator (\`AmountCalculatorInput\`).",
+      overview: "An enterprise-grade financial management platform developed with Next.js 16 (App Router), React 19, and Supabase. Enables users to manage multiple fund sources (Bank BCA, Mandiri, Cash, E-wallets), track budget allocations against actual spending with threshold alerts, execute double-entry inter-account transfers, and perform swift data entry using an integrated in-line mathematical evaluation calculator (`AmountCalculatorInput`).",
       techStack: ["Next.js 16 (App Router)", "React 19", "TypeScript", "Tailwind CSS v4", "Supabase SSR Auth", "PostgreSQL", "Recharts", "Lucide Icons"],
       github: "https://github.com/alfarisg34/financial-dashboard",
       demoUrl: "https://financialdashboard.alfarighilmana.my.id/",
