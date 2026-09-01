@@ -1,0 +1,42 @@
+{
+  "name": "Alfari Sidnan Ghilmana",
+  "title": "Full Stack Software Engineer & Systems Architect",
+  "organization": "Kementerian Ketenagakerjaan Republik Indonesia (Kemnaker RI)",
+  "education": "S1 Teknik Informatika - Universitas Padjadjaran (UNPAD)",
+  "domain": "https://alfarighilmana.my.id",
+  "email": "alfari.ghilmana@gmail.com",
+  "whatsapp": "+6281290423000",
+  "github": "https://github.com/alfarisg34",
+  "linkedin": "https://id.linkedin.com/in/alfari-ghilmana",
+  "location": "Indonesia",
+  "status": "Available for High-Impact Systems Architecture & Specialized Engineering Roles",
+  "projects": [
+    {
+      "name": "Kemnaker Excel Processor V3",
+      "category": "Enterprise Budget Automation",
+      "repo": "https://github.com/alfarisg34/excel-processor-v3"
+    },
+    {
+      "name": "EasyCal // Serverless OCR & Gemini Calendar Studio",
+      "category": "AI & Multimodal Automation",
+      "repo": "https://github.com/alfarisg34/easygooglecalendar",
+      "demo": "https://easycal.alfarighilmana.my.id"
+    },
+    {
+      "name": "Public Google Gemini Flash OCR Service (BYOK)",
+      "category": "AI & Multimodal OCR API",
+      "repo": "https://github.com/alfarisg34/ocr-service",
+      "demo": "https://ocr.alfarighilmana.my.id"
+    },
+    {
+      "name": "Interactive Family Tree Map Explorer",
+      "category": "Visual Computing & 60 FPS Canvas",
+      "demo": "https://familytree.alfarighilmana.my.id"
+    },
+    {
+      "name": "Smart Financial & Budget Intelligence Platform",
+      "category": "Fullstack Cloud OS",
+      "demo": "https://financialdashboard.alfarighilmana.my.id"
+    }
+  ]
+}
