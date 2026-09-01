@@ -1,0 +1,19 @@
+{
+  "name": "alfarighilmana-portfolio",
+  "version": "2.0.0",
+  "description": "Personal engineering portfolio & systems architecture showcase for Alfari Sidnan Ghilmana",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "serve": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "systems-architect",
+    "fullstack-engineer",
+    "anti-template-ui"
+  ],
+  "author": "Alfari Sidnan Ghilmana",
+  "license": "MIT"
+}
