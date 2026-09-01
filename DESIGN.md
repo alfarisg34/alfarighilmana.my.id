@@ -71,7 +71,7 @@ Instead, it embodies the rigor of a senior systems engineer and architectural de
 ## Signature Projects Catalog (7 Production Systems)
 
 1. **Kemnaker Excel Processor V3** (Enterprise Automation)
-2. **EasyCal // Serverless OCR & Gemini Calendar Studio** (AI & Workflow Automation)
+2. **Easy Google Calendar // Serverless OCR & Gemini Calendar Studio** (AI & Workflow Automation)
 3. **Public Google Gemini Flash OCR Service** (AI & Workflow Automation)
 4. **Telegram PDF & Bimtek Poster to Google Calendar Automation** (AI & Workflow Automation)
 5. **Interactive Family Tree Map Explorer** (Interactive & Canvas)

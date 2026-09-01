@@ -27,7 +27,7 @@ window.PORTFOLIO_DATA = {
     ],
     telemetryNodes: [
       { id: "NODE_EXCEL_V3", label: "Excel Processor V3", status: "ACTIVE", latency: "1.2s", env: "PROD", role: "Budget Matrix Engine" },
-      { id: "NODE_EASYCAL", label: "EasyCal Calendar AI", status: "ACTIVE", latency: "1.8s", env: "SERVERLESS", role: "Multimodal BYOK Studio" },
+      { id: "NODE_EASYGOOGLECALENDAR", label: "Easy Google Calendar | Calendar AI", status: "ACTIVE", latency: "1.8s", env: "SERVERLESS", role: "Multimodal BYOK Studio" },
       { id: "NODE_OCR_SERVICE", label: "Gemini Flash OCR API", status: "ACTIVE", latency: "280ms", env: "VERCEL EDGE", role: "Public Vision OCR" },
       { id: "NODE_FAMILYTREE", label: "Family Tree Canvas", status: "ACTIVE", latency: "60 FPS", env: "CLIENT/SUPABASE", role: "Visual Computing LOD" },
       { id: "NODE_WEALTH_OS", label: "Financial Dashboard OS", status: "ACTIVE", latency: "99.9%", env: "NEXT.JS 16 / SSR", role: "Multi-Wallet Ledger" }
@@ -279,8 +279,8 @@ Express API Server (/api/process & /api/process-with-fa)
 Output: Sanitized, 100% Mathematically Valid RAB Format Baru (.xlsx)`
     },
     {
-      id: "easycal-calendar",
-      title: "EasyCal // Serverless OCR & Gemini Calendar Studio",
+      id: "easygooglecalendar",
+      title: "Easy Google Calendar | Calendar AI",
       subtitle: "Multi-Format Multimodal Extraction for Dinas Documents, Posters & WhatsApp to 1-Click Google Calendar",
       category: "automation",
       categoryName: "AI & Workflow Automation",
@@ -290,7 +290,7 @@ Output: Sanitized, 100% Mathematically Valid RAB Format Baru (.xlsx)`
       overview: "A production-ready serverless Multimodal AI & OCR platform built with Next.js 16 and Google Gemini 2.5 Flash, engineered to eliminate manual calendar data entry for Indonesian civil servants and professionals. Directly integrated with custom OCR services (`https://ocr.alfarighilmana.my.id/`) and Gemini Flash AI under a privacy-first Bring Your Own Key (BYOK) architecture. Features an automated Telegram Bot Webhook (`/api/telegram/webhook`) where users can forward invitation PDFs or posters and instantly receive inline 1-click Google Calendar creation buttons and RFC-5545 `.ics` downloads.",
       techStack: ["Next.js 16 (App Router)", "TypeScript", "Google Gemini 2.5 Flash", "Telegram Bot API", "Vercel Serverless", "BYOK Architecture", "Tailwind CSS v4", "RFC-5545 .ICS Engine"],
       github: "https://github.com/alfarisg34/easygooglecalendar",
-      demoUrl: "https://easycal.alfarighilmana.my.id",
+      demoUrl: "https://easygooglecalendar.alfarighilmana.my.id/",
       stats: [
         { label: "Extraction Time", value: "<1.8s" },
         { label: "Cold Start", value: "<300ms" },

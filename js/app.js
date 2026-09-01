@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle-btn');
   const savedTheme = localStorage.getItem('theme') || 'dark';
-  
+
   applyTheme(savedTheme);
 
   if (toggleBtn) {
@@ -191,8 +191,8 @@ function renderProjects(categoryFilter = 'all') {
 
   if (!container || !data) return;
 
-  const filtered = categoryFilter === 'all' 
-    ? data 
+  const filtered = categoryFilter === 'all'
+    ? data
     : data.filter(p => p.category === categoryFilter);
 
   container.innerHTML = filtered.map(project => `
@@ -579,7 +579,7 @@ function renderCertifications() {
 /* ==========================================================================
    8. UTILITIES (CLIPBOARD & TOAST)
    ========================================================================== */
-window.copyToClipboard = function(text, successMsg = 'Copied to clipboard!') {
+window.copyToClipboard = function (text, successMsg = 'Copied to clipboard!') {
   navigator.clipboard.writeText(text).then(() => {
     showToast(successMsg);
   }).catch(err => {
